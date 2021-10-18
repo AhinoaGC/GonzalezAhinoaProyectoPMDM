@@ -18,7 +18,7 @@ class RegistroActivity : AppCompatActivity() {
         btGuardar=this.findViewById(R.id.btGuardar)
 
         btGuardar.setOnClickListener{
-            startActivity(intent)
+            onBackPressed()
         }
     }
 }

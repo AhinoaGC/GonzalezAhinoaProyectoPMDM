@@ -22,6 +22,7 @@
             android:name=".RegistroActivity"
             android:exported="true">
         </activity>
+
     </application>
 
 </manifest>
