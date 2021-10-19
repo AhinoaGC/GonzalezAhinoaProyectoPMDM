@@ -37,15 +37,19 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvIniciar">
+        app:layout_constraintTop_toBottomOf="@+id/tvIniciar"
+        app:boxStrokeColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:outlineSpotShadowColor="@color/white"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#8c9eff"
             android:textColor="@color/white"
-            android:textColorHighlight="@color/white"
-            android:textColorHint="@color/white" />
+            android:inputType="textEmailAddress"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,14 +61,16 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilCorreo">
+        app:layout_constraintTop_toBottomOf="@+id/tilCorreo"
+        android:outlineSpotShadowColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#8c9eff"
-            android:outlineSpotShadowColor="@color/white"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -96,10 +102,10 @@
         android:id="@+id/tvPantallaRegistro"
         android:layout_width="206dp"
         android:layout_height="19dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="36dp"
-        android:textColor="@color/white"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
         android:text="¿No tienes una cuenta? Crea una"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/btAceptar"
         app:layout_constraintTop_toBottomOf="@+id/btAceptar" />
 
