@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GonzalezAhinoaProyectoPMDM">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.ListaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,10 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistroActivity"
-            android:exported="true">
-        </activity>
-
+            android:name=".activities.RegistroActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

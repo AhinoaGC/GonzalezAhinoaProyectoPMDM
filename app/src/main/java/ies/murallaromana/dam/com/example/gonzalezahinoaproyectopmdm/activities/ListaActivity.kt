@@ -1,0 +1,29 @@
+package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
+import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
+import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
+
+class ListaActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityListaBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityListaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val peliculasDao = PeliculasDaoMockImpl()
+        val listaPeliculas = peliculasDao.getTodos()
+
+        val layoutManager = LinearLayoutManager(this)
+        val adapter = listaPeliculasAdapters(listaPeliculas)
+
+        binding.rvListaPeliculas.layoutManager= layoutManager
+        binding.rvListaPeliculas.adapter = adapter
+    }
+}
