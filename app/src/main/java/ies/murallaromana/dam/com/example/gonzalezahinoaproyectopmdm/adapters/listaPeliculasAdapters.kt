@@ -1,16 +1,23 @@
 package ies.murallaromana.dam.com.example.pruebalistas.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.PeliculaActivity
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.RegistroActivity
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
-class listaPeliculasAdapters(val peliculas : List<Pelicula>) : RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
+class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Context) : RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
 
     class PersonajesViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val tvTitulo = itemView.findViewById<TextView>(R.id.tvTitulo)
@@ -18,6 +25,7 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>) : RecyclerView.Adap
         val tvDirector = itemView.findViewById<TextView>(R.id.tvDirector)
         val tvPunt = itemView.findViewById<TextView>(R.id.tvPunt)
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
+        val cardView = itemView.findViewById<CardView>(R.id.cardView)
 
     }
 
@@ -28,13 +36,20 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: PersonajesViewHolder, position: Int) {
-        val personaje = peliculas.get(position)
+        val pelicula = peliculas.get(position)
 
-        holder.tvTitulo.setText(personaje.titulo)
-        holder.tvGenero.setText("Género: " +personaje.genero)
-        holder.tvDirector.setText("Director: "+personaje.director)
-        holder.tvPunt.setText(personaje.puntuacion)
-        Picasso.get().load(personaje.url).into(holder.ivFoto);
+        holder.tvTitulo.setText(pelicula.titulo)
+        holder.tvGenero.setText("Género: " +pelicula.genero)
+        holder.tvDirector.setText("Director: "+pelicula.director)
+        holder.tvPunt.setText(pelicula.puntuacion)
+        Picasso.get().load(pelicula.url).into(holder.ivFoto)
+
+        holder.cardView.setOnClickListener{
+            val intent = Intent(context, PeliculaActivity::class.java)
+            intent.putExtra("pelicula", pelicula)
+
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

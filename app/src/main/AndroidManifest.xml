@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GonzalezAhinoaProyectoPMDM">
         <activity
+            android:name=".activities.PeliculaActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.ListaActivity"
             android:exported="true" />
         <activity
@@ -23,7 +26,7 @@
         </activity>
         <activity
             android:name=".activities.RegistroActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

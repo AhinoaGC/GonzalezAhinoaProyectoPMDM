@@ -1,5 +1,6 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,9 +22,13 @@ class ListaActivity : AppCompatActivity() {
         val listaPeliculas = peliculasDao.getTodos()
 
         val layoutManager = LinearLayoutManager(this)
-        val adapter = listaPeliculasAdapters(listaPeliculas)
+        val adapter = listaPeliculasAdapters(listaPeliculas, this)
 
-        binding.rvListaPeliculas.layoutManager= layoutManager
+        binding.rvListaPeliculas.layoutManager = layoutManager
         binding.rvListaPeliculas.adapter = adapter
+
+
+        val intent = Intent(this, RegistroActivity::class.java)
+
     }
 }
