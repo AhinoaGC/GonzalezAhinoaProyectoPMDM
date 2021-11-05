@@ -11,7 +11,8 @@ class Pelicula(
     var url: String,
     var duracion: String,
     var ano: String,
-    var resumen: String
+    var resumen: String,
+    var urlVideo: String
 
 ): Serializable {
     //fun getNombreApellidos(): String{

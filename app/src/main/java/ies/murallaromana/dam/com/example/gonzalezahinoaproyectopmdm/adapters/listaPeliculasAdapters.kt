@@ -16,6 +16,16 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.PeliculaActivity
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.RegistroActivity
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import android.webkit.WebView
+
+import android.webkit.WebChromeClient
+
+import android.graphics.Bitmap
+
+import android.webkit.WebViewClient
+
+
+
 
 class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Context) : RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
 

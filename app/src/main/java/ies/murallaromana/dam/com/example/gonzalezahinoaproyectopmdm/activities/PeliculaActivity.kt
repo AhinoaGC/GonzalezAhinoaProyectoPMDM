@@ -2,6 +2,7 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebViewClient
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
@@ -29,6 +30,10 @@ class PeliculaActivity : AppCompatActivity() {
         binding.tvDuracion.text =pelicula.duracion
         binding.tvResumen.text =pelicula.resumen
         binding.tvNota.text =pelicula.puntuacion
+        binding.WebView.webViewClient = WebViewClient()
+        binding.WebView.settings.javaScriptEnabled=true
+        binding.WebView.loadUrl(pelicula.urlVideo)
+        binding.WebView.settings.setSupportZoom(true)
         Picasso.get().load(pelicula.url).into(binding.imPelicula)
 
     }
