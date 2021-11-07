@@ -10,7 +10,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
             "Expediente Warren: The Conjuring",
             "Terror",
             "James Wan",
-            "6.8",
+            "4",
             "https://playmax.xyz/img/c/400/9/1441459554/4448.jpg",
             "112 min",
             "2013",
@@ -27,8 +27,8 @@ class PeliculasDaoMockImpl : PeliculasDao {
             "La llegada",
             "Ciencia ficción",
             "Denis Villeneuve",
-            "7.3",
-            "https://pics.filmaffinity.com/La_llegada-150207636-large.jpg",
+            "4.5",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tbVITeytclB4JKx2LxxasrCCmZx.jpg",
             "116 min",
             "2016",
             "Cuando naves extraterrestres comienzan a llegar a la Tierra, los altos mandos militares piden " +
@@ -44,8 +44,8 @@ class PeliculasDaoMockImpl : PeliculasDao {
             "Mad Max: Furia en la carretera",
             "Ciencia ficción",
             "George Miller",
-            "7.1",
-            "https://pics.filmaffinity.com/Mad_Max_Furia_en_la_carretera-397817030-large.jpg",
+            "3.5",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mnVZLdo9C4X80sJmgcGNpMNCbgk.jpg",
             "120 min",
             "2015",
             "Perseguido por su turbulento pasado, Mad Max cree que la mejor forma de sobrevivir es " +
@@ -61,8 +61,8 @@ class PeliculasDaoMockImpl : PeliculasDao {
             "Al filo del mañana",
             "Ciencia ficción",
             "Douya Liman",
-            "8.2",
-            "https://pics.filmaffinity.com/Al_filo_del_ma_ana-632023834-large.jpg",
+            "5",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vNjwi0STOwzmwE9laZSMYYh2JPE.jpg",
             "113 min",
             "2014",
             "En un futuro no muy lejano, invade la Tierra una raza de extraterrestres invencibles. " +
@@ -72,7 +72,34 @@ class PeliculasDaoMockImpl : PeliculasDao {
                     " su lucha contra los alienígenas. Su compañera de combate es Rita Vrataski (Emily Blunt), una guerrera de " +
                     "las Fuerzas Especiales. Adaptación del manga de Hiroshi Sakurazaka.",
             "https://www.youtube.com/watch?v=Qd0_qYIhMZA"
-        )
+        ),
+        Pelicula(
+            4,
+            "Venom: Habrá matanza",
+            "Ciencia ficción",
+            "Andy Serkis",
+            "4",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2jVVDtDaeMxmcvrz2SNyhMcYtWc.jpg",
+            "1h 37m",
+            "2021",
+            "Eddie Brock (Tom Hardy) y su simbionte Venom todavía están intentando descubrir " +
+                    "cómo vivir juntos cuando un preso que está en el corredor de la muerte (Woody " +
+                    "Harrelson) se infecta con un simbionte propio.",
+            "https://www.youtube.com/watch?v=hbfadtw-fjs"
+        ),
+                Pelicula(
+                5,
+        "La familia Addams 2: La gran escapada",
+        "Aniación, Comedia",
+        "Conrad Vernon",
+        "3",
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qetczjArlkPb4EnB6ygyvgbYY2l.jpg",
+        "1h 33m",
+        "2021",
+        "Con la esperanza de acercarse como familia, Gómez, Morticia y el resto del clan Addams " +
+                "se embarcan en un aventurero viaje por carretera en una horrenda y gigantesca caravana.",
+        "https://www.youtube.com/watch?v=rfETRi0EP_I"
+    )
     )
 //    forma 1 de hacerlo
 //        val p1 = Personaje(0,"Daenerys","Targaryen","Mother of Dragons","Targaryen","http")

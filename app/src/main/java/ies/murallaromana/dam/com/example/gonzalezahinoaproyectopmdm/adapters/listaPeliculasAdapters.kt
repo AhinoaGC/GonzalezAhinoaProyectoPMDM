@@ -32,8 +32,8 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Contex
     class PersonajesViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val tvTitulo = itemView.findViewById<TextView>(R.id.tvTitulo)
         val tvGenero = itemView.findViewById<TextView>(R.id.tvGenero)
-        val tvDirector = itemView.findViewById<TextView>(R.id.tvDirector)
-        val tvPunt = itemView.findViewById<TextView>(R.id.tvPunt)
+//        val tvDirector = itemView.findViewById<TextView>(R.id.tvDirector)
+//        val tvPunt = itemView.findViewById<TextView>(R.id.tvPunt)
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
 
@@ -50,8 +50,8 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Contex
 
         holder.tvTitulo.setText(pelicula.titulo)
         holder.tvGenero.setText("Género: " +pelicula.genero)
-        holder.tvDirector.setText("Director: "+pelicula.director)
-        holder.tvPunt.setText(pelicula.puntuacion)
+//        holder.tvDirector.setText("Director: "+pelicula.director)
+//        holder.tvPunt.setText(pelicula.puntuacion)
         Picasso.get().load(pelicula.url).into(holder.ivFoto)
 
         holder.cardView.setOnClickListener{

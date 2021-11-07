@@ -4,39 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PeliculaActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".activities.PeliculaActivity">
 
     <TextView
         android:id="@+id/tvNota"
-        android:layout_width="98dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="0dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAno" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula"
+        app:layout_constraintTop_toBottomOf="@+id/tvDuracion" />
 
     <ImageView
         android:id="@+id/imPelicula"
-        android:layout_width="133dp"
-        android:layout_height="139dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDirectorPelicula"
+        android:layout_width="115dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvNombre"
-        android:layout_width="199dp"
-        android:layout_height="19dp"
+        android:layout_width="225dp"
+        android:layout_height="37dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="96dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imPelicula"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,20 +46,23 @@
         android:layout_width="200dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imPelicula"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <TextView
         android:id="@+id/tvDirectorPelicula"
-        android:layout_width="198dp"
+        android:layout_width="200dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="0dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imPelicula"
         app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
 
@@ -66,39 +70,59 @@
         android:id="@+id/tvResumen"
         android:layout_width="354dp"
         android:layout_height="199dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="168dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNota" />
 
     <TextView
         android:id="@+id/tvAno"
-        android:layout_width="97dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imPelicula" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula"
+        app:layout_constraintTop_toBottomOf="@+id/tvDirectorPelicula" />
 
     <TextView
         android:id="@+id/tvDuracion"
-        android:layout_width="97dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="0dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula"
         app:layout_constraintTop_toBottomOf="@+id/tvAno" />
 
     <WebView
         android:id="@+id/WebView"
-        android:layout_width="231dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/tvAno"
-        app:layout_constraintTop_toBottomOf="@+id/tvDirectorPelicula" />
+        android:layout_width="194dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imPelicula" />
+
+    <RatingBar
+        android:id="@+id/estrellas"
+        android:layout_width="242dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="Estrellas"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="5"
+        android:progressTint="#efb810"
+        android:secondaryProgressTint="#efb810"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

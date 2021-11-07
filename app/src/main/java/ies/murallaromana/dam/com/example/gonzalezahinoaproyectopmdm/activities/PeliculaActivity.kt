@@ -30,6 +30,7 @@ class PeliculaActivity : AppCompatActivity() {
         binding.tvDuracion.text =pelicula.duracion
         binding.tvResumen.text =pelicula.resumen
         binding.tvNota.text =pelicula.puntuacion
+        binding.estrellas.rating= pelicula.puntuacion.toFloat()
         binding.WebView.webViewClient = WebViewClient()
         binding.WebView.settings.javaScriptEnabled=true
         binding.WebView.loadUrl(pelicula.urlVideo)
