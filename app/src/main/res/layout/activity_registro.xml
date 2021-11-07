@@ -4,126 +4,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8c9eff"
+    android:background="@mipmap/img_1"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Registrarse"
-        android:textColor="@color/white"
-        android:textSize="35sp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="376dp"
+        android:layout_height="597dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="20dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilNombre"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:hint="Nombre"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegistro"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editNombre"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8c9eff"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:background="#e0e0e0"
+            >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilApellidos"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
-        android:hint="Apellidos"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@+id/tilNombre">
+            <TextView
+                android:id="@+id/tvRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Registrarse"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editApellidos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8c9eff" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Nombre"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRegistro">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiplCorreo"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
-        android:hint="Correo electrónico"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@+id/tilApellidos">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8c9eff" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApellidos"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilContrasenha"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
-        android:hint="Contraseña"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@+id/tiplCorreo">
+                android:hint="Apellidos"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilNombre">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editContrasenha"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8c9eff" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btGuardar"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="116dp"
-        android:text="Guardar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilContrasenha" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiplCorreo"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                android:hint="Correo electrónico"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilApellidos">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTelefono"
-        android:layout_width="341dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
-        android:hint="Teléfono"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilContrasenha">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8c9eff" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilContrasenha"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Contraseña"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiplCorreo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editContrasenha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btGuardar"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="116dp"
+                android:text="Guardar"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilContrasenha" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTelefono"
+                android:layout_width="341dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="20dp"
+                android:hint="Teléfono"
+                android:textColorHint="@color/black"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilContrasenha">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
