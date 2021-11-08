@@ -14,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dce0e6">
+        android:background="?android:selectableItemBackground"
+        >
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivFoto"
@@ -33,7 +34,7 @@
             android:id="@+id/tvTitulo"
             android:layout_width="286dp"
             android:layout_height="25dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
             android:text="titulo"
             android:textColor="@color/black"

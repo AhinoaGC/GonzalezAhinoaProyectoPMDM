@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CrearPeliculaActivity">
+
+    <RatingBar
+        android:id="@+id/estrellas2"
+        android:layout_width="242dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="Estrellas"
+        android:isIndicator="false"
+        android:max="5"
+        android:numStars="5"
+        android:progressTint="#efb810"
+        android:secondaryProgressTint="#efb810"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imPelicula2"
+        android:layout_width="115dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/etTitulo"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Titulo"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toBottomOf="@+id/estrellas2" />
+
+    <EditText
+        android:id="@+id/edGenero"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:hint="Género"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toBottomOf="@+id/etTitulo" />
+
+    <EditText
+        android:id="@+id/edDirector"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Director"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toBottomOf="@+id/edGenero" />
+
+    <EditText
+        android:id="@+id/etAno"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Año"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toBottomOf="@+id/edDirector" />
+
+    <EditText
+        android:id="@+id/etDuracion"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Duración"
+        app:layout_constraintStart_toEndOf="@+id/imPelicula2"
+        app:layout_constraintTop_toBottomOf="@+id/etAno" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="371dp"
+        android:layout_height="174dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Sinopsis"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDuracion" />
+
+    <Button
+        android:id="@+id/brGuardarPelicula"
+        android:layout_width="126dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

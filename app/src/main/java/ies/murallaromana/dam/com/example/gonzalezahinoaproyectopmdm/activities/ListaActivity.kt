@@ -19,6 +19,7 @@ class ListaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val peliculasDao = PeliculasDaoMockImpl()
+        peliculasDao.añadirPeliculasIniciales()
         val listaPeliculas = peliculasDao.getTodos()
 
         val layoutManager = LinearLayoutManager(this)
@@ -28,7 +29,9 @@ class ListaActivity : AppCompatActivity() {
         binding.rvListaPeliculas.adapter = adapter
 
 
-        val intent = Intent(this, RegistroActivity::class.java)
-
+        val intent = Intent(this, CrearPeliculaActivity::class.java)
+        binding.fbAdd.setOnClickListener{
+            startActivity(intent)
+        }
     }
 }

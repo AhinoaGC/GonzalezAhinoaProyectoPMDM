@@ -34,7 +34,7 @@
                 android:orientation="vertical" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilContrasena"
+                android:id="@+id/tilGenero"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -113,7 +113,7 @@
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilContrasena">
+                app:layout_constraintTop_toBottomOf="@+id/tilGenero">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

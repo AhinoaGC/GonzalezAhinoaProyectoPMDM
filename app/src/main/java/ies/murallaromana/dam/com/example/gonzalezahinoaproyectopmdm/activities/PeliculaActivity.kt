@@ -24,18 +24,18 @@ class PeliculaActivity : AppCompatActivity() {
         pelicula = intent.extras?.get("pelicula") as Pelicula
 
         binding.tvNombre.text =pelicula.titulo
-        binding.tvGeneroPelicula.text =pelicula.genero
-        binding.tvDirectorPelicula.text =pelicula.director
-        binding.tvAno.text =pelicula.ano
-        binding.tvDuracion.text =pelicula.duracion
-        binding.tvResumen.text =pelicula.resumen
-        binding.tvNota.text =pelicula.puntuacion
+        binding.tvGeneroPelicula.text ="Género: "+pelicula.genero
+        binding.tvDirectorPelicula.text ="Director: "+pelicula.director
+        binding.tvAno.text ="Año: "+pelicula.ano
+        binding.tvDuracion.text ="Duración: "+pelicula.duracion
+        binding.tvResumen.text ="Sinopsis:\n"+pelicula.resumen
         binding.estrellas.rating= pelicula.puntuacion.toFloat()
         binding.WebView.webViewClient = WebViewClient()
         binding.WebView.settings.javaScriptEnabled=true
         binding.WebView.loadUrl(pelicula.urlVideo)
         binding.WebView.settings.setSupportZoom(true)
         Picasso.get().load(pelicula.url).into(binding.imPelicula)
+
 
     }
 }
