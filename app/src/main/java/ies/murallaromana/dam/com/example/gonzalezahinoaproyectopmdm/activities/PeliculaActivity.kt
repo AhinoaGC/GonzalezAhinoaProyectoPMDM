@@ -2,7 +2,9 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.webkit.WebViewClient
+import android.widget.ScrollView
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
@@ -29,6 +31,7 @@ class PeliculaActivity : AppCompatActivity() {
         binding.tvAno.text ="Año: "+pelicula.ano
         binding.tvDuracion.text ="Duración: "+pelicula.duracion
         binding.tvResumen.text ="Sinopsis:\n"+pelicula.resumen
+        binding.tvResumen.setMovementMethod(ScrollingMovementMethod())
         binding.estrellas.rating= pelicula.puntuacion.toFloat()
         binding.WebView.webViewClient = WebViewClient()
         binding.WebView.settings.javaScriptEnabled=true

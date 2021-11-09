@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
         tvPantallaRegistro=this.findViewById(R.id.tvPantallaRegistro)
 
         tvPantallaRegistro.setOnClickListener{
-            //tvPantallaRegistro.setTextColor(resources.getColor(R.color.white))
             startActivity(intent)
 
 
@@ -32,10 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val lista = Intent(this, ListaActivity::class.java)
 
         btAceptar.setOnClickListener{
-            //tvPantallaRegistro.setTextColor(resources.getColor(R.color.white))
             startActivity(lista)
-
-
         }
 
 

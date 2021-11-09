@@ -4,138 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".activities.PeliculaActivity">
+    android:padding="@dimen/margen_pantalla_default"
+    tools:context=".activities.PeliculaActivity"
+    android:background="@mipmap/img_1">
 
-    <ImageView
-        android:id="@+id/imPelicula"
-        android:layout_width="115dp"
-        android:layout_height="167dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="382dp"
+        android:layout_height="582dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="237dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:text="TextView"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e0e0e0">
 
-    <TextView
-        android:id="@+id/tvGeneroPelicula"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+            <ImageView
+                android:id="@+id/imPelicula"
+                android:layout_width="115dp"
+                android:layout_height="167dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvDirectorPelicula"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="36dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="212dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="96dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvResumen"
-        android:layout_width="369dp"
-        android:layout_height="145dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imPelicula" />
+            <TextView
+                android:id="@+id/tvGeneroPelicula"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="0dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
-    <TextView
-        android:id="@+id/tvAno"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="24dp"
+            <TextView
+                android:id="@+id/tvDirectorPelicula"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="36dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
 
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toBottomOf="@+id/tvDirectorPelicula" />
+            <TextView
+                android:id="@+id/tvResumen"
+                android:layout_width="362dp"
+                android:layout_height="145dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:scrollbars="vertical"
+                android:text="TextView"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imPelicula" />
 
-    <TextView
-        android:id="@+id/tvDuracion"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toBottomOf="@+id/tvAno" />
+            <TextView
+                android:id="@+id/tvAno"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
 
-    <WebView
-        android:id="@+id/WebView"
-        android:layout_width="367dp"
-        android:layout_height="227dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/tvResumen" />
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toBottomOf="@+id/tvDirectorPelicula" />
 
-    <RatingBar
-        android:id="@+id/estrellas"
-        android:layout_width="242dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="Estrellas"
-        android:isIndicator="true"
-        android:max="5"
-        android:numStars="5"
-        android:progressTint="#efb810"
-        android:secondaryProgressTint="#efb810"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imPelicula"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvDuracion"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="0dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toBottomOf="@+id/tvAno" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+            <WebView
+                android:id="@+id/WebView"
+                android:layout_width="355dp"
+                android:layout_height="151dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.285"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/tvResumen" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="376dp" />
+            <RatingBar
+                android:id="@+id/estrellas"
+                android:layout_width="238dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="Estrellas"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="5"
+                android:progressTint="#efb810"
+                android:secondaryProgressTint="#efb810"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imPelicula"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="5dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="376dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="7dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

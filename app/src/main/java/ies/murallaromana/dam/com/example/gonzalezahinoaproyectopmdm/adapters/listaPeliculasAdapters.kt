@@ -23,8 +23,7 @@ import android.webkit.WebChromeClient
 import android.graphics.Bitmap
 
 import android.webkit.WebViewClient
-
-
+import android.widget.RatingBar
 
 
 class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Context) : RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
@@ -36,6 +35,7 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Contex
 //        val tvPunt = itemView.findViewById<TextView>(R.id.tvPunt)
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
+        val estrellas = itemView.findViewById<RatingBar>(R.id.ratingBar)
 
     }
 
@@ -52,6 +52,7 @@ class listaPeliculasAdapters(val peliculas : List<Pelicula>, val context: Contex
         holder.tvGenero.setText("Género: " +pelicula.genero)
 //        holder.tvDirector.setText("Director: "+pelicula.director)
 //        holder.tvPunt.setText(pelicula.puntuacion)
+        holder.estrellas.rating= pelicula.puntuacion.toFloat()
         Picasso.get().load(pelicula.url).into(holder.ivFoto)
 
         holder.cardView.setOnClickListener{
