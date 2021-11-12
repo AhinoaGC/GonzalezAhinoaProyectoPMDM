@@ -35,11 +35,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilGenero"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:hint="Correo electrónico"
+                app:startIconDrawable="@drawable/email"
+                app:startIconContentDescription="Email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,11 +107,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCorreo"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:hint="Contraseña"
+                app:startIconDrawable="@drawable/password"
+                app:startIconContentDescription="Contraseña"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
