@@ -42,45 +42,5 @@ class RegistroActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-//        editNombre=findViewById(R.id.editNombre)
-//        tilNombre=findViewById(R.id.tilNombre)
-//
-//        tilNombre.setOnClickListener{
-//            var sharePrefs = getPreferences(Context.MODE_PRIVATE)
-//            var editor = sharePrefs.edit()
-//            editor.putString("Email",editNombre.text.toString())
-//        }
-//        editApellidos=findViewById(R.id.editApellidos)
-//        tilApellidos=findViewById(R.id.tilApellidos)
-//
-//        tilApellidos.setOnClickListener{
-//            var sharePrefs = getPreferences(Context.MODE_PRIVATE)
-//            var editor = sharePrefs.edit()
-//            editor.putString("Email",editApellidos.text.toString())
-//        }
-//        editCorreo=findViewById(R.id.editCorreo)
-//        tilCorreo=findViewById(R.id.tilCorreo)
-//
-//        tilCorreo.setOnClickListener{
-//            var sharePrefs = getPreferences(Context.MODE_PRIVATE)
-//            var editor = sharePrefs.edit()
-//            editor.putString("Email",editCorreo.text.toString())
-//        }
-//        editContrasenha=findViewById(R.id.editContrasenha)
-//        tilContrasenha=findViewById(R.id.tilContrasenha)
-//
-//        tilContrasenha.setOnClickListener{
-//            var sharePrefs = getPreferences(Context.MODE_PRIVATE)
-//            var editor = sharePrefs.edit()
-//            editor.putString("Email",editContrasenha.text.toString())
-//        }
-//        editTelefono=findViewById(R.id.editTelefono)
-//        tilTelefono=findViewById(R.id.tilTelefono)
-//
-//        tilTelefono.setOnClickListener{
-//            var sharePrefs = getPreferences(Context.MODE_PRIVATE)
-//            var editor = sharePrefs.edit()
-//            editor.putString("Email",editTelefono.text.toString())
-//        }
     }
 }

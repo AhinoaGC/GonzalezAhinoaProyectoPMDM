@@ -4,18 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.webkit.WebViewClient
-import android.widget.ScrollView
 import com.squareup.picasso.Picasso
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityPeliculaBinding
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
 class PeliculaActivity : AppCompatActivity() {
 
-    companion object{
-        lateinit var pelicula: Pelicula
-    }
+    private lateinit var pelicula: Pelicula
     private lateinit var binding: ActivityPeliculaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etAno" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/etResumen"
                 android:layout_width="326dp"
                 android:layout_height="174dp"
                 android:layout_marginStart="4dp"
@@ -129,7 +129,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="Guardar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+                app:layout_constraintTop_toBottomOf="@+id/etResumen" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline9"
