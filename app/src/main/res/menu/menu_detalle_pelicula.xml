@@ -2,16 +2,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="300"
+        android:icon="@drawable/ic_baseline_create_24"
+        android:title="Eliminar"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_save_or_update"
         android:icon="@drawable/ic_baseline_check_24"
         android:orderInCategory="300"
         android:title="Guardar"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_delete"
-        android:orderInCategory="300"
-        android:icon="@drawable/ic_baseline_delete_forever_24"
-        android:title="Eliminar"
-        app:showAsAction="ifRoom" />
-
 </menu>
