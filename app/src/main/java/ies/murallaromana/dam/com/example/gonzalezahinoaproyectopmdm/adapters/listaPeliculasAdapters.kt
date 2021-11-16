@@ -64,6 +64,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
         holder.cardView.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("¿Que quieres hacer con la pelicula?")
+            builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
             builder.setPositiveButton("Editar") { dialog, which ->
                 val intent = Intent(context, CrearPeliculaActivity::class.java)
                 intent.putExtra("pelicula", pelicula)
@@ -72,6 +73,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
             builder.setNegativeButton("Eliminar") { dialog, which ->
                 val eliminar = AlertDialog.Builder(context)
                 eliminar.setTitle("¿Estás seguro que quieres eliminar la pelicula?")
+                eliminar.setIcon(R.drawable.ic_baseline_delete_forever_24)
                 eliminar.setNegativeButton("Cancelar") { dialog, which ->
                 }
                 eliminar.setPositiveButton("Eliminar") { dialog, which ->
