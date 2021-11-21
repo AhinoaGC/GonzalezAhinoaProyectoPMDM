@@ -3,6 +3,7 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
@@ -22,6 +23,7 @@ class ListaActivity : AppCompatActivity() {
         peliculasDao.añadirPeliculasIniciales()
         val listaPeliculas = peliculasDao.getTodos()
 
+//        val layoutManager = GridLayoutManager(this,2)
         val layoutManager = LinearLayoutManager(this)
         val adapter = listaPeliculasAdapters(listaPeliculas, this)
 
