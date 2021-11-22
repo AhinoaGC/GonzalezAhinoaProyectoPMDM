@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.method.ScrollingMovementMethod
-import android.webkit.WebViewClient
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityPeliculaBinding
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
 
@@ -50,10 +48,6 @@ class CrearPeliculaActivity : AppCompatActivity() {
             binding.estrellas2.rating = pelicula.puntuacion.toFloat()
             Picasso.get().load(pelicula.url).into(binding.imP)
 //        }
-//        binding.WebView.webViewClient = WebViewClient()
-//        binding.WebView.settings.javaScriptEnabled=true
-//        binding.WebView.loadUrl(PeliculaActivity.pelicula.urlVideo)
-//        binding.WebView.settings.setSupportZoom(true)
 
     }
 
