@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,13 +10,16 @@
     tools:context=".activities.LoginActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="341dp"
-        android:layout_height="403dp"
+        android:layout_width="340dp"
+        android:padding="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center_horizontal"
         android:innerRadius="0dp"
         android:shape="ring"
         android:thicknessRatio="1.9"
@@ -23,9 +27,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#e0e0e0"
-            >
+            android:layout_height="400dp"
+            android:background="#e0e0e0">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
@@ -35,17 +38,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilGenero"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:hint="Correo electrónico"
-                app:startIconDrawable="@drawable/ic_baseline_alternate_email_24"
-                app:startIconContentDescription="Email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvIniciar">
+                app:layout_constraintTop_toBottomOf="@+id/tvIniciar"
+                app:startIconContentDescription="Email"
+                app:startIconDrawable="@drawable/ic_baseline_alternate_email_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -107,17 +110,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCorreo"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:hint="Contraseña"
-                app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
-                app:startIconContentDescription="Contraseña"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilGenero">
+                app:layout_constraintTop_toBottomOf="@+id/tilGenero"
+                app:startIconContentDescription="Contraseña"
+                app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -130,5 +133,4 @@
 
     </androidx.cardview.widget.CardView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

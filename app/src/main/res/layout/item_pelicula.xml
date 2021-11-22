@@ -8,15 +8,12 @@
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true"
-
     >
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:selectableItemBackground"
         >
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivFoto"
             android:layout_width="76dp"
