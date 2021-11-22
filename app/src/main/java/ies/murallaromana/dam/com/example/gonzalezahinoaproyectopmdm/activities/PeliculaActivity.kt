@@ -5,25 +5,49 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import android.webkit.WebViewClient
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityPeliculaBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetalleBinding
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerView
 
-class PeliculaActivity : AppCompatActivity() {
+class PeliculaActivity : YouTubeBaseActivity() {
 
     private lateinit var pelicula: Pelicula
-    private lateinit var binding: ActivityPeliculaBinding
+    private lateinit var binding: ActivityDetalleBinding
+    val api_key =  "AIzaSyDloPeo-4_YVthgz5zeOUakEesajpYItrI"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPeliculaBinding.inflate(layoutInflater)
+        binding = ActivityDetalleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
-
         setTitle(pelicula.titulo)
+
+        binding.videoYoutube.initialize(api_key, object : YouTubePlayer.OnInitializedListener{
+
+            override fun onInitializationSuccess(
+                provider: YouTubePlayer.Provider?,
+                player: YouTubePlayer?,
+                p2: Boolean
+            ) {
+                player?.loadVideo(pelicula.urlVideo)
+                player?.play()
+            }
+            override fun onInitializationFailure(
+                p0: YouTubePlayer.Provider?,
+                p1: YouTubeInitializationResult?
+            ) {
+                Toast.makeText(this@PeliculaActivity, "Error al cargar video.", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
         binding.tvNombre.text = pelicula.titulo
         binding.tvGeneroPelicula.text = "Género: " + pelicula.genero
         binding.tvDirectorPelicula.text = "Director: " + pelicula.director
@@ -32,10 +56,6 @@ class PeliculaActivity : AppCompatActivity() {
         binding.tvResumen.text = "Sinopsis:\n" + pelicula.resumen
         binding.tvResumen.setMovementMethod(ScrollingMovementMethod())
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
-        binding.WebView.webViewClient = WebViewClient()
-        binding.WebView.settings.javaScriptEnabled = true
-        binding.WebView.loadUrl(pelicula.urlVideo)
-        binding.WebView.settings.setSupportZoom(true)
         Picasso.get().load(pelicula.url).into(binding.imPelicula)
 
 

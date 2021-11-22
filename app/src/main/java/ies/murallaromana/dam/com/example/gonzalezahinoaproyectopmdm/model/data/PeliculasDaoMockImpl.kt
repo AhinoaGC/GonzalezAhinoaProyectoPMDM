@@ -25,7 +25,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                         "su casa de Rhode Island a principios de los 70. El matrimonio Warren, investigadores de " +
                         "renombre en el mundo de los fenómenos paranormales, acudieron a la llamada de esta familia " +
                         "aterrorizada por la presencia en su granja de un ser maligno.",
-                "https://www.youtube.com/watch?v=_LeRZFHqYLw"
+                "_LeRZFHqYLw"
 
             ),
             Pelicula(
@@ -43,7 +43,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                         "extraños invasores, poseedores de un lenguaje propio, para dar con la verdadera y misteriosa razón " +
                         "de la visita extraterrestre... Adaptación del relato corto \"The Story of Your Life\" del escritor" +
                         " Ted Chiang, ganador de los reconocidos premios de ciencia ficción Hugo y Nebula.",
-                "https://www.youtube.com/watch?v=uWs5lsWXLbo"
+                "uWs5lsWXLbo"
             ),
             Pelicula(
                 2,
@@ -60,7 +60,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                         "Ciudadela tiranizada por Immortan Joe, a quien han arrebatado algo irreemplazable. Enfurecido, el " +
                         "Señor de la Guerra moviliza a todas sus bandas y persigue implacablemente a los rebeldes en una \"guerra de la carretera\" " +
                         "de altas revoluciones... Cuarta entrega de la saga post-apocalíptica que resucita la trilogía que a principios de los ochenta protagonizó Mel Gibson.",
-                "https://www.youtube.com/watch?v=hEJnMQG9ev8"
+                "hEJnMQG9ev8"
             ),
             Pelicula(
                 3,
@@ -77,7 +77,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                         "luchar y morir una y otra vez. Pero las múltiples batallas que libra lo hacen cada vez más hábil y eficaz en" +
                         " su lucha contra los alienígenas. Su compañera de combate es Rita Vrataski (Emily Blunt), una guerrera de " +
                         "las Fuerzas Especiales. Adaptación del manga de Hiroshi Sakurazaka.",
-                "https://www.youtube.com/watch?v=Qd0_qYIhMZA"
+                "Qd0_qYIhMZA"
             ),
             Pelicula(
                 4,
@@ -91,7 +91,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "Eddie Brock (Tom Hardy) y su simbionte Venom todavía están intentando descubrir " +
                         "cómo vivir juntos cuando un preso que está en el corredor de la muerte (Woody " +
                         "Harrelson) se infecta con un simbionte propio.",
-                "https://www.youtube.com/watch?v=hbfadtw-fjs"
+                "hbfadtw-fjs"
             ),
             Pelicula(
                 5,
@@ -104,7 +104,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "2021",
                 "Con la esperanza de acercarse como familia, Gómez, Morticia y el resto del clan Addams " +
                         "se embarcan en un aventurero viaje por carretera en una horrenda y gigantesca caravana.",
-                "https://www.youtube.com/watch?v=rfETRi0EP_I"
+                "rfETRi0EP_I"
             )))
     }
 
