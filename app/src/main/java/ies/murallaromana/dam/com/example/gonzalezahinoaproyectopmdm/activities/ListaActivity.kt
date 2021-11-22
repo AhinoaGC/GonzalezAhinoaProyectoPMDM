@@ -3,6 +3,8 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
@@ -19,6 +21,8 @@ class ListaActivity : AppCompatActivity() {
         binding = ActivityListaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setTitle("PopFilms")
+
         val peliculasDao = PeliculasDaoMockImpl()
         peliculasDao.añadirPeliculasIniciales()
         val listaPeliculas = peliculasDao.getTodos()
@@ -30,11 +34,28 @@ class ListaActivity : AppCompatActivity() {
         binding.rvListaPeliculas.layoutManager = layoutManager
         binding.rvListaPeliculas.adapter = adapter
 
-        setTitle("")
-
         val intent = Intent(this, CrearPeliculaActivity::class.java)
         binding.fbAdd.setOnClickListener{
             startActivity(intent)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_lista, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_save_or_update -> {
+                // Hago cosas y al final retorno un valor
+                return false
+            }
+            R.id.action_delete -> {
+                // Hago cosas y al final pongo el valor a retornar
+                return false
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

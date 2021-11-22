@@ -14,6 +14,12 @@ import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
+import android.view.View
+
+import com.google.android.material.tabs.TabLayout
+
+
+
 
 class PeliculaActivity : YouTubeBaseActivity() {
 
@@ -28,7 +34,7 @@ class PeliculaActivity : YouTubeBaseActivity() {
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
 //        setTitle(pelicula.titulo)
-
+//        http://www.tutorialsface.com/2018/01/android-awesome-app-bar-with-tabs-in-a-coordinator-layout-tutorial-similar-to-samajbook/
         binding.videoYoutube.initialize(api_key, object : YouTubePlayer.OnInitializedListener{
 
             override fun onInitializationSuccess(
@@ -46,6 +52,10 @@ class PeliculaActivity : YouTubeBaseActivity() {
                 Toast.makeText(this@PeliculaActivity, "Error al cargar video.", Toast.LENGTH_SHORT).show()
             }
         })
+
+        binding.tab.addTab(binding.tab.newTab().setText("TabOne"))
+        binding.tab.addTab(binding.tab.newTab().setText("TabTwo"))
+        binding.tab.setupWithViewPager(binding.viewPage)
 
         binding.tbTitulo.title=pelicula.titulo
         binding.tvNombre.text = pelicula.titulo
