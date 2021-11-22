@@ -27,7 +27,7 @@ class PeliculaActivity : YouTubeBaseActivity() {
         setContentView(binding.root)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
-        setTitle(pelicula.titulo)
+//        setTitle(pelicula.titulo)
 
         binding.videoYoutube.initialize(api_key, object : YouTubePlayer.OnInitializedListener{
 
@@ -47,7 +47,7 @@ class PeliculaActivity : YouTubeBaseActivity() {
             }
         })
 
-
+        binding.tbTitulo.title=pelicula.titulo
         binding.tvNombre.text = pelicula.titulo
         binding.tvGeneroPelicula.text = "Género: " + pelicula.genero
         binding.tvDirectorPelicula.text = "Director: " + pelicula.director

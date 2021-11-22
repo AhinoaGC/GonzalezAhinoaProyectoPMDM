@@ -8,6 +8,7 @@
         <entry key="..\:/Users/ahino/AndroidStudioProjects/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_pelicula.xml" value="0.33" />
         <entry key="..\:/Users/ahino/AndroidStudioProjects/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_registro.xml" value="0.33" />
         <entry key="..\:/Users/ahino/AndroidStudioProjects/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/item_pelicula.xml" value="0.3220108695652174" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.3828125" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/font/abril_fatface.xml" value="0.23541666666666666" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/font/asset.xml" value="0.23541666666666666" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_borrar.xml" value="0.36666666666666664" />
@@ -23,6 +24,10 @@
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_segunda.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/item_pelicula.xml" value="0.33" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/menu/menu_detalle_pelicula.xml" value="0.36666666666666664" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/mipmap-anydpi-v26/ic_popcorn.xml" value="0.3828125" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/mipmap-anydpi-v26/ic_popcorn_round.xml" value="0.3828125" />
       </map>
     </option>
   </component>
