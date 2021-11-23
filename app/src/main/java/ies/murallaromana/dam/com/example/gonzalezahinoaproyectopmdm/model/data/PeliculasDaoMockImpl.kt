@@ -4,12 +4,9 @@ import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
 class PeliculasDaoMockImpl : PeliculasDao {
 
-    val list = mutableListOf<Pelicula>()
+    val list = ArrayList<Pelicula>()
 
-    override fun getTodos(): List<Pelicula> = list
-
-
-    fun añadirPeliculasIniciales(){
+    override fun getTodos(): ArrayList<Pelicula>{
         list.addAll(listOf(
             Pelicula(
                 0,
@@ -106,52 +103,6 @@ class PeliculasDaoMockImpl : PeliculasDao {
                         "se embarcan en un aventurero viaje por carretera en una horrenda y gigantesca caravana.",
                 "rfETRi0EP_I"
             )))
+        return list
     }
-
-    fun crearPelicula(
-        id: Long,
-        titulo: String,
-        director: String,
-        genero: String,
-        ano: String,
-        duracion: String,
-        sinopsis: String,
-        estrellas: Float,
-        url: String,
-        urlVideo: String
-    ): Pelicula {
-        val p1 = Pelicula(
-            id,
-            titulo,
-            genero,
-            director,
-            estrellas.toString(),
-            url,
-            duracion,
-            ano,
-            sinopsis,
-            urlVideo
-        )
-        return p1
-    }
-
-
-//    forma 1 de hacerlo
-//        val p1 = Personaje(0,"Daenerys","Targaryen","Mother of Dragons","Targaryen","http")
-//        val p2 = Personaje(1,"Samwell", "Tarly", "Maester", "House Tarly","http")
-//        val p3 = Personaje(2,"Arya", "Stark", "No One", "House Stark","http")
-//        val p4 = Personaje(3,"Brienne", "Tarth", "Briene of Tarth", "Tarth","http")
-//
-//        val listaPersonaje = listOf(p1,p2,p3,p4)
-//        return listaPersonaje
-
-//    forma 2 de hacerlo
-//        return listOf(
-//            Personaje(0, "Daenerys", "Targaryen", "Mother of Dragons", "Targaryen", "http"),
-//            Personaje(1, "Samwell", "Tarly", "Maester", "House Tarly", "http"),
-//            Personaje(2, "Arya", "Stark", "No One", "House Stark", "http"),
-//            Personaje(3, "Brienne", "Tarth", "Briene of Tarth", "Tarth", "http")
-//        )
-
-
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 
@@ -24,7 +25,6 @@ class ListaActivity : AppCompatActivity() {
         setTitle("PopFilms")
 
         val peliculasDao = PeliculasDaoMockImpl()
-        peliculasDao.añadirPeliculasIniciales()
         val listaPeliculas = peliculasDao.getTodos()
 
 //        val layoutManager = GridLayoutManager(this,2)
@@ -62,5 +62,11 @@ class ListaActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         moveTaskToBack(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val adapter = listaPeliculasAdapters(peliculas, this)
+        binding.rvListaPeliculas.adapter = adapter
     }
 }
