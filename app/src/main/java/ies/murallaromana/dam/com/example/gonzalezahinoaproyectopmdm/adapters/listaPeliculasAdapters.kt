@@ -30,6 +30,7 @@ import android.webkit.WebViewClient
 import android.widget.RatingBar
 import android.widget.Toast
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.CrearPeliculaActivity
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App
 
 
 class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context) :
@@ -44,13 +45,11 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
         val estrellas = itemView.findViewById<RatingBar>(R.id.ratingBar)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajesViewHolder {
         val layoutInflater =
             LayoutInflater.from(parent.context).inflate(R.layout.item_pelicula, parent, false)
-
         return PersonajesViewHolder(layoutInflater)
     }
 
@@ -84,6 +83,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
                 eliminar.setNegativeButton("Cancelar") { dialog, which ->
                 }
                 eliminar.setPositiveButton("Eliminar") { dialog, which ->
+                    App.peliculas.remove(pelicula)
                     Toast.makeText(context, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
                 }
                 eliminar.show()
