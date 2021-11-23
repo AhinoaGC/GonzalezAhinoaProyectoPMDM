@@ -24,6 +24,7 @@ import android.webkit.WebChromeClient
 
 import android.graphics.Bitmap
 import android.provider.Settings.Global.getString
+import android.view.View.OnLongClickListener
 
 import android.webkit.WebViewClient
 import android.widget.RatingBar
@@ -61,8 +62,14 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
         holder.estrellas.rating = pelicula.puntuacion.toFloat()
         Picasso.get().load(pelicula.url).into(holder.ivFoto)
 
-        holder.cardView.setOnClickListener {
-            val builder = AlertDialog.Builder(context)
+        holder.cardView.setOnClickListener{
+            val intent = Intent(context, PeliculaActivity::class.java)
+            intent.putExtra("pelicula", pelicula)
+            context.startActivity(intent)
+        }
+
+        holder.cardView.setOnLongClickListener(OnLongClickListener {
+        val builder = AlertDialog.Builder(context)
             builder.setTitle("¿Que quieres hacer con la pelicula?")
             builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
             builder.setPositiveButton("Editar") { dialog, which ->
@@ -89,7 +96,8 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
                 context.startActivity(intent)
             }
             builder.show()
-        }
+            false
+        })
     }
 
     override fun getItemCount(): Int {
