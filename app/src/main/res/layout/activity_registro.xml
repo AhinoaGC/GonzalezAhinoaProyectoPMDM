@@ -4,58 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/img_1"
+    android:background="@mipmap/fondo"
     android:padding="16dp"
     android:layout_gravity="center"
     >
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="376dp"
-        android:layout_height="597dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="20dp"
-        android:innerRadius="0dp"
-        android:layout_gravity="center_horizontal"
-        android:shape="ring"
-        android:thicknessRatio="1.9"
-        >
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#e0e0e0"
-            >
-
-            <TextView
-                android:id="@+id/tvRegistro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Registrarse"
-                android:textColor="@color/black"
-                android:textSize="35sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNombre"
-                android:layout_width="341dp"
-                android:layout_height="59dp"
-                android:layout_marginTop="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="300dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="10dp"
                 android:hint="Nombre"
-                app:startIconDrawable="@drawable/ic_baseline_person_24"
-                app:startIconContentDescription="Nombre"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvRegistro">
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconContentDescription="Nombre"
+                app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editNombre"
@@ -68,7 +37,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilApellidos"
-                android:layout_width="341dp"
+                android:layout_width="300dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -91,7 +60,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tiplCorreo"
-                android:layout_width="341dp"
+                android:layout_width="300dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="20dp"
                 android:hint="Correo electrónico"
@@ -114,7 +83,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilContrasenha"
-                android:layout_width="341dp"
+                android:layout_width="300dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -137,18 +106,19 @@
 
             <Button
                 android:id="@+id/btGuardar"
-                android:layout_width="341dp"
-                android:layout_height="59dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="116dp"
+                android:layout_width="149dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="84dp"
+                android:backgroundTint="#a4d8ff"
                 android:text="Guardar"
                 android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilContrasenha" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilTelefono"
-                android:layout_width="341dp"
+                android:layout_width="300dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="20dp"
                 android:hint="Teléfono"
@@ -169,6 +139,4 @@
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 </androidx.core.widget.NestedScrollView>

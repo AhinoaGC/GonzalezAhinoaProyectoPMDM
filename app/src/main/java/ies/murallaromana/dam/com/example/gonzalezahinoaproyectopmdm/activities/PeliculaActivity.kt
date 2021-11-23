@@ -8,30 +8,15 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
-import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import android.widget.Toolbar
-
-import com.google.android.material.tabs.TabLayout
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.fragments.Detalle_Fragment
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.fragments.Sinopsis_Fragment
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.adapters.detallePageAdapters
-import com.google.android.youtube.player.YouTubePlayerView
 
 import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetalleBinding
 
 
-class PeliculaActivity :  YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
+class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListener {
 
 
     private lateinit var pelicula: Pelicula
@@ -44,12 +29,12 @@ class PeliculaActivity :  YouTubeBaseActivity(), YouTubePlayer.OnInitializedList
         setContentView(binding.root)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
+        setTitle(pelicula.titulo)
 
-        binding.videoYoutube.initialize(api_key, this)
+//        binding.videoYoutube.initialize(api_key, this)
 
-//       val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
-//
-//        youTubePlayerFragment.initialize(api_key, this)
+       val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
+        youTubePlayerFragment.initialize(api_key, this)
 //        //Fragments cambiar de detalle a sinopsis
 //        val pagerAdapter = detallePageAdapters(this)
 //        pagerAdapter.addFragment(Detalle_Fragment())

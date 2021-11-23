@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.ListaActivity"
     android:padding="16dp"
-    android:background="@mipmap/img_1">
+    android:background="@mipmap/popcorn">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListaPeliculas"
