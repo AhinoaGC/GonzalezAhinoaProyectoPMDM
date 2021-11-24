@@ -2,25 +2,27 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityEditarPeliculaBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
-class EditarPeliculaActivity: AppCompatActivity() {
-
-    private lateinit var binding: ActivityCrearPeliculaBinding
+class EditarPeliculaActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityEditarPeliculaBinding
     private val pickImage = 100
     private var imageUri: Uri? = null
     private lateinit var pelicula: Pelicula
+    private lateinit var peliculaNueva: Pelicula
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCrearPeliculaBinding.inflate(layoutInflater)
+        binding = ActivityEditarPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Intent para coger una imagen de la galería
@@ -38,18 +40,22 @@ class EditarPeliculaActivity: AppCompatActivity() {
         binding.etResumen.setText("Sinopsis:\n" + pelicula.resumen)
         binding.etResumen.setMovementMethod(ScrollingMovementMethod())
         binding.estrellas2.rating = pelicula.puntuacion.toFloat()
+        binding.eUrlVideo.setText(pelicula.urlVideo);
         Picasso.get().load(pelicula.url).into(binding.imP)
 
         binding.brGuardarPelicula.setOnClickListener {
-
-//            pelicula.titulo= binding.etTitulo.text.toString()
-//            pelicula.genero= binding.edGenero.text.toString()
-//            pelicula.director= binding.edDirector.text.toString()
-//            pelicula.ano= binding.etAno.text.toString()
-//            pelicula.duracion= binding.etDuracion.text.toString()
-//            pelicula.resumen= binding.etResumen.text.toString()
-//            pelicula.puntuacion= binding.estrellas2.rating.toString()
-//            pelicula.url = imageUri.toString()
+            val titulo = binding.etTitulo.text.toString()
+            val genero = binding.edGenero.text.toString()
+            val director = binding.edDirector.text.toString()
+            val puntuacion = binding.estrellas2.rating.toString()
+            val imagen = imageUri.toString()
+            val duracion = binding.etDuracion.text.toString()
+            val ano = binding.etAno.text.toString()
+            val resumen = binding.etResumen.text.toString()
+            val video = binding.eUrlVideo.text.toString()
+            peliculaNueva=Pelicula("75757",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
+            peliculas.remove(pelicula)
+            peliculas.add(peliculaNueva)
             Toast.makeText(this, "Pelicula guardada", Toast.LENGTH_SHORT).show()
             finish()
         }

@@ -8,9 +8,9 @@
         android:title="Eliminar"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_save_or_update"
-        android:icon="@drawable/ic_baseline_check_24"
+        android:id="@+id/action_call"
+        android:icon="@drawable/ic_baseline_local_phone_24"
         android:orderInCategory="300"
-        android:title="Guardar"
+        android:title="Llamar"
         app:showAsAction="ifRoom" />
 </menu>

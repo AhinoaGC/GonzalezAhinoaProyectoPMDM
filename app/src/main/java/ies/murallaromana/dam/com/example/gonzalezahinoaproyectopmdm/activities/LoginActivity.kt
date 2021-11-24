@@ -29,8 +29,41 @@ class LoginActivity : AppCompatActivity() {
         binding.tvPantallaRegistro.setOnClickListener{
             val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btAceptar.setOnClickListener{
+
+            if (binding.tieEmail.text.toString().length==0 || binding.tieCont.text.toString().length==0 ){
+
+                val adb = AlertDialog.Builder(this)
+                adb.setTitle("Datos incorrectos")
+                adb.setMessage("El usuario y/o la contraseña están vacíos.")
+                adb.setPositiveButton("Aceptar") { dialog, which ->}
+                adb.show()
+            }
+            else if (!nombre.equals(binding.tieEmail.text.toString())) {
+                binding.tieEmail.setError("El usuario no existe")
+            } else if (!contraseña.equals(binding.tieCont.text.toString())) {
+                binding.tieCont.setError("La contraseña no es correcta")
+            } else {
+                val lista = Intent(this, ListaActivity::class.java)
+                startActivity(lista)
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val nombre = pre.recuperarDatos("nombre")
+        val contraseña = pre.recuperarDatos("contraseña")
+
+        binding.tieEmail.setText(nombre)
+        binding.tieCont.setText(contraseña)
 
 
+        binding.tvPantallaRegistro.setOnClickListener{
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btAceptar.setOnClickListener{

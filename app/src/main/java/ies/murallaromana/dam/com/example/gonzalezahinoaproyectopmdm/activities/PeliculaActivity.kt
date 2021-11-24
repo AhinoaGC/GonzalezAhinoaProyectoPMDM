@@ -1,5 +1,7 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
@@ -31,16 +33,13 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         binding = ActivityDetallePeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pelicula = intent.extras?.get("pelicula") as Pelicula
-        supportActionBar?.hide()
-//        setSupportActionBar(binding.toolbar)
 
-//        binding.videoYoutube.initialize(api_key, this)
+        pelicula = intent.extras?.get("pelicula") as Pelicula
+        setTitle(pelicula.titulo)
 
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
         youTubePlayerFragment.initialize(api_key, this)
 
-        binding.toolbar.setTitle(pelicula.titulo)
         binding.tvGeneroPelicula.text = pelicula.genero
         binding.tvDirectorPelicula.text = pelicula.director
         binding.tvAno.text = "Año: " + pelicula.ano
@@ -58,21 +57,29 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.action_save_or_update -> {
-//            // Hago cosas y al final retorno un valor
-//                return false
-//            }
-//            R.id.action_delete -> {
-            peliculas.remove(pelicula)
-                Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
-                finish()
-        return super.onOptionsItemSelected(item)
-//                return false
-//            }
-//            else -> super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.action_call -> {
+                Toast.makeText(this, "Llamar", Toast.LENGTH_SHORT).show()
+                return false
+            }
+            R.id.action_delete -> {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("¿Quieres borrar la pelicula?")
+                builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
+                builder.setPositiveButton("Cancelar") { dialog, which ->
+                    Toast.makeText(this, "La pelicula no se ha borrado.", Toast.LENGTH_SHORT).show()
+                }
+                builder.setNegativeButton("Borrar") { dialog, which ->
+                    peliculas.remove(pelicula)
+                    Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                builder.show()
+                return false
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-//    }
+    }
 
     override fun onInitializationSuccess(
         provider: YouTubePlayer.Provider?,

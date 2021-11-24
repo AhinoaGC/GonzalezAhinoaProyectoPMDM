@@ -36,7 +36,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
             val duracion = binding.etDuracion.text.toString()
             val ano = binding.etAno.text.toString()
             val resumen = binding.etResumen.text.toString()
-            val video = "video"
+            val video = binding.eUrlVideo.text.toString()
 
             pelicula= Pelicula("75757",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
             peliculas.add(pelicula)
