@@ -30,6 +30,7 @@ import android.webkit.WebViewClient
 import android.widget.RatingBar
 import android.widget.Toast
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.CrearPeliculaActivity
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.EditarPeliculaActivity
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App
 
 
@@ -72,7 +73,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
             builder.setTitle("¿Que quieres hacer con la pelicula?")
             builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
             builder.setPositiveButton("Editar") { dialog, which ->
-                val intent = Intent(context, CrearPeliculaActivity::class.java)
+                val intent = Intent(context, EditarPeliculaActivity::class.java)
                 intent.putExtra("pelicula", pelicula)
                 context.startActivity(intent)
             }

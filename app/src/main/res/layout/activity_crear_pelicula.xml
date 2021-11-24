@@ -6,34 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.CrearPeliculaActivity"
-    android:background="@mipmap/fono02">
+    android:background="@mipmap/fono01">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="341dp"
-        android:layout_height="582dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:innerRadius="0dp"
-        android:shape="ring"
-        android:thicknessRatio="1.9"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#e0e0e0">
+            android:layout_height="match_parent">
 
             <RatingBar
                 android:id="@+id/estrellas2"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="183dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="52dp"
                 android:layout_marginEnd="20dp"
                 android:contentDescription="Estrellas"
                 android:isIndicator="false"
@@ -42,7 +27,7 @@
                 android:progressTint="#efb810"
                 android:secondaryProgressTint="#efb810"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.197"
                 app:layout_constraintStart_toEndOf="@+id/imP"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,8 +101,8 @@
                 android:id="@+id/etResumen"
                 android:layout_width="326dp"
                 android:layout_height="174dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Sinopsis"
@@ -127,12 +112,13 @@
 
             <Button
                 android:id="@+id/brGuardarPelicula"
-                android:layout_width="126dp"
+                android:layout_width="197dp"
                 android:layout_height="37dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Guardar"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.42"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etResumen" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -155,7 +141,5 @@
                 app:srcCompat="@android:drawable/ic_menu_crop" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 
 </androidx.core.widget.NestedScrollView>
