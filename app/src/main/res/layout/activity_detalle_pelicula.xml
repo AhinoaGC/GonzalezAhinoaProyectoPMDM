@@ -26,7 +26,7 @@
                 android:id="@+id/youtubeplayer_fragment"
                 android:name="com.google.android.youtube.player.YouTubePlayerFragment"
                 android:layout_width="match_parent"
-                android:layout_height="214dp"
+                android:layout_height="192dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                app:titleTextColor="@color/white"
+                android:backgroundTint="@color/white"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -44,8 +46,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,50 +53,34 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvNombre"
-                android:layout_width="143dp"
-                android:layout_height="83dp"
-                android:layout_marginTop="16dp"
-                android:lines="2"
-                android:padding="16dp"
-                android:text="Venom"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/tvGeneroPelicula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/tvDirectorPelicula"
-                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvDirectorPelicula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/tvGeneroPelicula"
-                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RatingBar
                 android:id="@+id/estrellas"
@@ -104,6 +88,7 @@
                 android:layout_width="211dp"
                 android:layout_height="69dp"
                 android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="Estrellas"
                 android:isIndicator="true"
                 android:max="5"
@@ -112,7 +97,20 @@
                 android:progressTint="#efb810"
                 android:secondaryProgressTint="#efb810"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="199dp" />
+                app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
+
+            <TextView
+                android:id="@+id/tvResumen"
+                android:layout_width="match_parent"
+                android:layout_height="313dp"
+                android:layout_marginTop="24dp"
+                android:padding="16dp"
+                android:scrollbars="vertical"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/estrellas" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

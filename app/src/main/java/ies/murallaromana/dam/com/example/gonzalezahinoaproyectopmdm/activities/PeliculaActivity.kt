@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetalleBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 
 
@@ -21,31 +23,32 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
 
 
     private lateinit var pelicula: Pelicula
-    private lateinit var binding: ActivityDetalleBinding
+    private lateinit var binding: ActivityDetallePeliculaBinding
     val api_key =  "AIzaSyDloPeo-4_YVthgz5zeOUakEesajpYItrI"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetalleBinding.inflate(layoutInflater)
+        binding = ActivityDetallePeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
-        setTitle(pelicula.titulo)
+        supportActionBar?.hide()
+//        setSupportActionBar(binding.toolbar)
 
 //        binding.videoYoutube.initialize(api_key, this)
 
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
         youTubePlayerFragment.initialize(api_key, this)
 
-        binding.tvNombre.text = pelicula.titulo
-        binding.tvGeneroPelicula.text = "Género: " + pelicula.genero
-        binding.tvDirectorPelicula.text = "Director: " + pelicula.director
+        binding.toolbar.setTitle(pelicula.titulo)
+        binding.tvGeneroPelicula.text = pelicula.genero
+        binding.tvDirectorPelicula.text = pelicula.director
         binding.tvAno.text = "Año: " + pelicula.ano
-        binding.tvDuracion.text = "Duración: " + pelicula.duracion
-        binding.tvResumen.text = "Sinopsis:\n" + pelicula.resumen
+//        binding.tvDuracion.text = "Duración: " + pelicula.duracion
+        binding.tvResumen.text = pelicula.resumen
         binding.tvResumen.setMovementMethod(ScrollingMovementMethod())
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
-        Picasso.get().load(pelicula.url).into(binding.imPelicula)
+//        Picasso.get().load(pelicula.url).into(binding.imPelicula)
     }
 
 
