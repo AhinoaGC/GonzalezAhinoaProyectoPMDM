@@ -26,19 +26,19 @@ class CrearPeliculaActivity : AppCompatActivity() {
         binding = ActivityCrearPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val titulo = binding.etTitulo.text.toString()
-        val genero = binding.edGenero.text.toString()
-        val director = binding.edDirector.text.toString()
-        val puntuacion = binding.estrellas2.rating.toString()
-        val imagen = imageUri.toString()
-        val duracion = binding.etDuracion.text.toString()
-        val ano = binding.etAno.text.toString()
-        val resumen = binding.etResumen.text.toString()
-        val video = "video"
-
         //Botón para guardar las peliculas creadas
         binding.brGuardarPelicula.setOnClickListener {
-            pelicula= Pelicula(2,titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
+            val titulo = binding.etTitulo.text.toString()
+            val genero = binding.edGenero.text.toString()
+            val director = binding.edDirector.text.toString()
+            val puntuacion = binding.estrellas2.rating.toString()
+            val imagen = imageUri.toString()
+            val duracion = binding.etDuracion.text.toString()
+            val ano = binding.etAno.text.toString()
+            val resumen = binding.etResumen.text.toString()
+            val video = "video"
+
+            pelicula= Pelicula("75757",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
             peliculas.add(pelicula)
             Toast.makeText(this, "Pelicula creada", Toast.LENGTH_SHORT).show()
             finish()

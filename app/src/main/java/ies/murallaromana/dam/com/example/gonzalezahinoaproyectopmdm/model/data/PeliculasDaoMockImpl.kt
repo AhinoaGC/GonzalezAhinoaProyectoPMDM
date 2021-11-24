@@ -9,7 +9,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
     override fun getTodos(): ArrayList<Pelicula>{
         list.addAll(listOf(
             Pelicula(
-                0,
+                "0",
                 "Expediente Warren: The Conjuring",
                 "Terror",
                 "James Wan",
@@ -26,7 +26,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
 
             ),
             Pelicula(
-                1,
+                "1",
                 "La llegada",
                 "Ciencia ficción",
                 "Denis Villeneuve",
@@ -43,7 +43,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "uWs5lsWXLbo"
             ),
             Pelicula(
-                2,
+                "2",
                 "Mad Max: Furia en la carretera",
                 "Ciencia ficción",
                 "George Miller",
@@ -60,7 +60,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "hEJnMQG9ev8"
             ),
             Pelicula(
-                3,
+                "3",
                 "Al filo del mañana",
                 "Ciencia ficción",
                 "Douya Liman",
@@ -77,7 +77,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "Qd0_qYIhMZA"
             ),
             Pelicula(
-                4,
+                "4",
                 "Venom: Habrá matanza",
                 "Ciencia ficción",
                 "Andy Serkis",
@@ -91,7 +91,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "hbfadtw-fjs"
             ),
             Pelicula(
-                5,
+                "5",
                 "La familia Addams 2: La gran escapada",
                 "Aniación, Comedia",
                 "Conrad Vernon",

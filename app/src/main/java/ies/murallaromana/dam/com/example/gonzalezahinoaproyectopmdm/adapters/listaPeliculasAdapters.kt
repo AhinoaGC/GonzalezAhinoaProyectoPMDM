@@ -76,19 +76,6 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
                 intent.putExtra("pelicula", pelicula)
                 context.startActivity(intent)
             }
-            builder.setNegativeButton("Eliminar") { dialog, which ->
-                val eliminar = AlertDialog.Builder(context)
-                eliminar.setTitle("¿Estás seguro que quieres eliminar la pelicula?")
-                eliminar.setIcon(R.drawable.ic_baseline_delete_forever_24)
-                eliminar.setNegativeButton("Cancelar") { dialog, which ->
-                }
-                eliminar.setPositiveButton("Eliminar") { dialog, which ->
-                    App.peliculas.remove(pelicula)
-                    Toast.makeText(context, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
-                }
-                eliminar.show()
-            }
-
             builder.setNeutralButton("Ver") { dialog, which ->
                 val intent = Intent(context, PeliculaActivity::class.java)
                 intent.putExtra("pelicula", pelicula)

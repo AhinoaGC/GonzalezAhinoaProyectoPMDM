@@ -3,7 +3,7 @@ package ies.murallaromana.dam.com.example.pruebalistas.model.entities
 import java.io.Serializable
 
 class Pelicula(
-    var id: Long,
+    var numero: String,
     var titulo: String,
     var genero: String,
     var director: String,
