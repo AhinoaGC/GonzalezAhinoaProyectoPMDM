@@ -37,12 +37,10 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.A
 class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
 
+
     class PersonajesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTitulo = itemView.findViewById<TextView>(R.id.tvTitulo)
         val tvGenero = itemView.findViewById<TextView>(R.id.tvGenero)
-
-        //        val tvDirector = itemView.findViewById<TextView>(R.id.tvDirector)
-//        val tvPunt = itemView.findViewById<TextView>(R.id.tvPunt)
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
         val estrellas = itemView.findViewById<RatingBar>(R.id.ratingBar)
@@ -87,6 +85,16 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
             false
         })
     }
+//
+//    fun buscar(svBuscar: String){
+//        var long = svBuscar.length
+//        if(long == 0){
+//
+//        }
+//
+//
+//
+//    }
 
     override fun getItemCount(): Int {
         return peliculas.size

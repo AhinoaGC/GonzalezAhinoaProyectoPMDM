@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
@@ -13,7 +14,7 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.A
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 
-class ListaActivity : AppCompatActivity() {
+class ListaActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     private lateinit var binding: ActivityListaBinding
 
@@ -26,8 +27,6 @@ class ListaActivity : AppCompatActivity() {
 
         val peliculasDao = PeliculasDaoMockImpl()
         val listaPeliculas = peliculasDao.getTodos()
-
-//        val layoutManager = GridLayoutManager(this,2)
         val layoutManager = LinearLayoutManager(this)
         val adapter = listaPeliculasAdapters(listaPeliculas, this)
 
@@ -56,6 +55,8 @@ class ListaActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+
+        binding.svBuscar.setOnQueryTextListener(this)
     }
 
     override fun onBackPressed() {
@@ -67,5 +68,13 @@ class ListaActivity : AppCompatActivity() {
         super.onResume()
         val adapter = listaPeliculasAdapters(peliculas, this)
         binding.rvListaPeliculas.adapter = adapter
+    }
+
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        TODO("Not yet implemented")
     }
 }

@@ -2,6 +2,7 @@ package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
@@ -16,9 +17,12 @@ import com.google.android.youtube.player.YouTubePlayer
 import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.youtube.player.YouTubePlayerFragment
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetalleBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
+import android.text.TextUtils
+
+
+
 
 
 class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListener {
@@ -59,7 +63,14 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_call -> {
-                Toast.makeText(this, "Llamar", Toast.LENGTH_SHORT).show()
+                val phoneNo: String = pelicula.numero
+                if (!TextUtils.isEmpty(phoneNo)) {
+                    val dial = "tel:$phoneNo"
+                    startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(dial)))
+                } else {
+                    Toast.makeText(this@PeliculaActivity, "Error", Toast.LENGTH_SHORT)
+                        .show()
+                }
                 return false
             }
             R.id.action_delete -> {
