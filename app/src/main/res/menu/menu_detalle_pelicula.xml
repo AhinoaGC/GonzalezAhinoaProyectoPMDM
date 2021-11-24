@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_delete"
         android:orderInCategory="300"
-        android:icon="@drawable/ic_baseline_create_24"
+        android:icon="@drawable/ic_baseline_delete_forever_24"
         android:title="Eliminar"
         app:showAsAction="ifRoom" />
     <item

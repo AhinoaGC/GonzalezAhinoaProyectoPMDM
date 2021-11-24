@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetalleBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 
 
 class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListener {
@@ -35,29 +36,6 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
 
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
         youTubePlayerFragment.initialize(api_key, this)
-//        //Fragments cambiar de detalle a sinopsis
-//        val pagerAdapter = detallePageAdapters(this)
-//        pagerAdapter.addFragment(Detalle_Fragment())
-//        pagerAdapter.addFragment(Sinopsis_Fragment())
-//
-//        binding.viewPager.adapter = pagerAdapter
-//        TabLayoutMediator(binding.tabLayout, binding.viewPager) {
-//                tab, position ->
-//            if (position == 1)tab.setText("Sinopsis")
-//            if (position == 0)tab.setText("Detalle")}.attach()
-//
-//        val bundle = Bundle()
-//        bundle.putString("titulo", pelicula.titulo)
-//        bundle.putString("ano", pelicula.ano)
-//        bundle.putString("director", pelicula.director)
-//        bundle.putString("duracion", pelicula.duracion)
-//        bundle.putString("puntuacion", pelicula.puntuacion)
-//        bundle.putString("foto", pelicula.url)
-//        var fragInfo: Fragment = Detalle_Fragment()
-//        fragInfo.setArguments(bundle)
-//        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-//        transaction.add( fragInfo, "R.id.fragment_container").commit()
-
 
         binding.tvNombre.text = pelicula.titulo
         binding.tvGeneroPelicula.text = "Género: " + pelicula.genero
@@ -77,18 +55,21 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_save_or_update -> {
-            // Hago cosas y al final retorno un valor
-                return false
-            }
-            R.id.action_delete -> {
-            // Hago cosas y al final pongo el valor a retornar
-                return false
-            }
-            else -> super.onOptionsItemSelected(item)
+//        return when (item.itemId) {
+//            R.id.action_save_or_update -> {
+//            // Hago cosas y al final retorno un valor
+//                return false
+//            }
+//            R.id.action_delete -> {
+            peliculas.remove(pelicula)
+                Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
+                finish()
+        return super.onOptionsItemSelected(item)
+//                return false
+//            }
+//            else -> super.onOptionsItemSelected(item)
         }
-    }
+//    }
 
     override fun onInitializationSuccess(
         provider: YouTubePlayer.Provider?,

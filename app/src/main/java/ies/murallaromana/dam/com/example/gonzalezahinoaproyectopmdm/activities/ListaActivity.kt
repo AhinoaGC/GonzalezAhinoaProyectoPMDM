@@ -52,7 +52,6 @@ class ListaActivity : AppCompatActivity() {
                 return false
             }
             R.id.action_delete -> {
-                // Hago cosas y al final pongo el valor a retornar
                 return false
             }
             else -> super.onOptionsItemSelected(item)
