@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo"
+    android:background="@mipmap/fono01"
     android:padding="16dp"
     android:layout_gravity="center"
     >
@@ -17,7 +17,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
                 android:layout_height="59dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:hint="Nombre"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,10 +106,10 @@
 
             <Button
                 android:id="@+id/btGuardar"
-                android:layout_width="149dp"
+                android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="84dp"
-                android:backgroundTint="#a4d8ff"
+                android:backgroundTint="#d45b58"
                 android:text="Guardar"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"

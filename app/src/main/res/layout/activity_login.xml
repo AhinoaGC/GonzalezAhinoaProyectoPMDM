@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo"
+    android:background="@mipmap/fono01"
     android:padding="16dp"
     tools:context=".activities.LoginActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,9 +16,9 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="132dp"
-            android:layout_height="129dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/ic_baseline_person_24"
+            android:layout_height="130dp"
+            android:layout_marginTop="55dp"
+            android:background="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
             android:layout_height="59dp"
             android:layout_marginTop="16dp"
             android:text="Iniciar Sesión"
-            android:backgroundTint="#a4d8ff"
+            android:backgroundTint="#d45b58"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"

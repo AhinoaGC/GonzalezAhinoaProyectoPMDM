@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.CrearPeliculaActivity"
-    android:background="@mipmap/img_1">
+    android:background="@mipmap/fono02">
 
     <androidx.cardview.widget.CardView
         android:layout_width="341dp"
