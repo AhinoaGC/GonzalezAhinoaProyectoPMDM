@@ -2,7 +2,7 @@ package ies.murallaromana.dam.com.example.pruebalistas.model.entities
 
 import java.io.Serializable
 
-class Pelicula(
+data class Pelicula(
     var numero: String,
     var titulo: String,
     var genero: String,
