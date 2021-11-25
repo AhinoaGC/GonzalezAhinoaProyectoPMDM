@@ -85,6 +85,7 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
     }
 
     override fun getFilter(): Filter {
+//        https://rrtutors.com/android-SearchView-filter
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
                 var listFilter=ArrayList<Pelicula>();
@@ -109,7 +110,6 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
 
                 list.clear()
                 list.addAll(p1?.values as Collection<Pelicula>)
-
                 notifyDataSetChanged()
             }
         }

@@ -20,6 +20,8 @@ import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import android.text.TextUtils
+import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.TextView
 
 
 
@@ -49,9 +51,14 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         binding.tvAno.text = "Año: " + pelicula.ano
 //        binding.tvDuracion.text = "Duración: " + pelicula.duracion
         binding.tvResumen.text = pelicula.resumen
-        binding.tvResumen.setMovementMethod(ScrollingMovementMethod())
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
 //        Picasso.get().load(pelicula.url).into(binding.imPelicula)
+
+//        binding.tcMostrarMas.setOnClickListener{
+//            val height = "wrap_content" //your textview height
+//
+//            binding.tvResumen.layoutParams.height = height
+//        }
     }
 
 
