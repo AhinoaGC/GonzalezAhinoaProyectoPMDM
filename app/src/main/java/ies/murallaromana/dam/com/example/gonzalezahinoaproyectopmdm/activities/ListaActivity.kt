@@ -44,8 +44,6 @@ class ListaActivity : AppCompatActivity() {
         binding.fbAdd.setOnClickListener {
             startActivity(intent)
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

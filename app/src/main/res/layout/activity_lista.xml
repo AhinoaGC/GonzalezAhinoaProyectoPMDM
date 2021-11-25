@@ -18,7 +18,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbAdd"
+            android:id="@+id/fbMas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -28,5 +28,16 @@
             android:src="@android:drawable/ic_input_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbSalir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:contentDescription="Añadir"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toTopOf="@+id/fbMas"
+            app:layout_constraintEnd_toEndOf="@+id/rvListaPeliculas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
