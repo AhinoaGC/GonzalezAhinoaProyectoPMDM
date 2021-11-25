@@ -5,18 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
+import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ListaActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
+class ListaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaBinding
+    private lateinit var adapters: listaPeliculasAdapters
+    private lateinit var lista: ArrayList<Pelicula>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,39 +29,42 @@ class ListaActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
         setContentView(binding.root)
 
         setTitle("PopFilms")
+//        supportActionBar?.hide()
 
-        val peliculasDao = PeliculasDaoMockImpl()
-        val listaPeliculas = peliculasDao.getTodos()
+//        val peliculasDao = PeliculasDaoMockImpl()
+//        val listaPeliculas = peliculasDao.getTodos()
+        lista = peliculas
         val layoutManager = LinearLayoutManager(this)
-        val adapter = listaPeliculasAdapters(listaPeliculas, this)
+        adapters = listaPeliculasAdapters(lista, this)
 
         binding.rvListaPeliculas.layoutManager = layoutManager
-        binding.rvListaPeliculas.adapter = adapter
+        binding.rvListaPeliculas.adapter = adapters
 
         val intent = Intent(this, CrearPeliculaActivity::class.java)
-        binding.fbAdd.setOnClickListener{
+        binding.fbAdd.setOnClickListener {
             startActivity(intent)
         }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_lista, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_save_or_update -> {
-                // Hago cosas y al final retorno un valor
+        val item = menu?.findItem(R.id.search)
+        var sv=item?.actionView as SearchView
+        sv.setImeOptions(EditorInfo.IME_ACTION_DONE)
+        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(txt: String?): Boolean {
                 return false
             }
-            R.id.action_delete -> {
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapters.getFilter().filter(newText)
+                adapters!!.notifyDataSetChanged()
                 return false
             }
-            else -> super.onOptionsItemSelected(item)
-        }
-
-        binding.svBuscar.setOnQueryTextListener(this)
+        })
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onBackPressed() {
@@ -66,15 +74,8 @@ class ListaActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     override fun onResume() {
         super.onResume()
-        val adapter = listaPeliculasAdapters(peliculas, this)
-        binding.rvListaPeliculas.adapter = adapter
-    }
-
-    override fun onQueryTextSubmit(p0: String?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun onQueryTextChange(p0: String?): Boolean {
-        TODO("Not yet implemented")
+//        val adapter = listaPeliculasAdapters(peliculas, this)
+        adapters!!.notifyDataSetChanged()
+        binding.rvListaPeliculas.adapter = adapters
     }
 }

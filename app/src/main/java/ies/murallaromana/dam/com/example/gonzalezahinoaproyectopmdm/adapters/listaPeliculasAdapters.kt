@@ -1,42 +1,35 @@
 package ies.murallaromana.dam.com.example.pruebalistas.adapters
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.PeliculaActivity
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.RegistroActivity
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
-import android.webkit.WebView
 
-import android.webkit.WebChromeClient
-
-import android.graphics.Bitmap
-import android.provider.Settings.Global.getString
+import android.os.Build
 import android.view.View.OnLongClickListener
+import android.widget.*
 
-import android.webkit.WebViewClient
-import android.widget.RatingBar
-import android.widget.Toast
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.CrearPeliculaActivity
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.EditarPeliculaActivity
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App
+import java.util.stream.Collectors
 
 
-class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context) :
-    RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>() {
+class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Context) :
+    RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
+    var list:ArrayList<Pelicula>
+
+    init {
+        list= ArrayList()
+        list.addAll(peliculas)
+    }
 
     class PersonajesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTitulo = itemView.findViewById<TextView>(R.id.tvTitulo)
@@ -44,6 +37,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
         val estrellas = itemView.findViewById<RatingBar>(R.id.ratingBar)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajesViewHolder {
@@ -85,18 +79,39 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>, val context: Context
             false
         })
     }
-//
-//    fun buscar(svBuscar: String){
-//        var long = svBuscar.length
-//        if(long == 0){
-//
-//        }
-//
-//
-//
-//    }
 
     override fun getItemCount(): Int {
         return peliculas.size
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                var listFilter=ArrayList<Pelicula>();
+                if(p0==null||p0.isEmpty())
+                {
+                    listFilter.addAll(peliculas)
+                }else
+                {
+                    val filterPattern: String = p0.toString().toLowerCase().trim()
+                    for (item in peliculas) {
+                        if (item.titulo.toLowerCase().contains(filterPattern)) {
+                            listFilter.add(item)
+                        }
+                    }
+                }
+                val results = FilterResults()
+                results.values = listFilter
+                return  results;
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: Filter.FilterResults?) {
+
+                list.clear()
+                list.addAll(p1?.values as Collection<Pelicula>)
+
+                notifyDataSetChanged()
+            }
+        }
     }
 }

@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.GonzalezAhinoaProyectoPMDM" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#d45b58</item>
-        <item name="colorPrimaryVariant">#7af9fe</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">#ff8a80</item>
+        <item name="colorPrimaryVariant">#c85a54</item>
+        <item name="colorOnPrimary">#ffbcaf</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#d45b58</item>
-        <item name="colorSecondaryVariant">#7af9fe</item>
+        <item name="colorSecondary">#ff8a80</item>
+        <item name="colorSecondaryVariant">#c85a54</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
