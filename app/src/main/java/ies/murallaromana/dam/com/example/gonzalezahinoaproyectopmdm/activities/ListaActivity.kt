@@ -41,7 +41,7 @@ class ListaActivity : AppCompatActivity() {
         binding.rvListaPeliculas.adapter = adapters
 
         val intent = Intent(this, CrearPeliculaActivity::class.java)
-        binding.fbAdd.setOnClickListener {
+        binding.fbMas.setOnClickListener {
             startActivity(intent)
         }
     }
