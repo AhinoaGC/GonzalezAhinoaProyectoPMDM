@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
@@ -25,7 +26,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
 
         //Botón para guardar las peliculas creadas

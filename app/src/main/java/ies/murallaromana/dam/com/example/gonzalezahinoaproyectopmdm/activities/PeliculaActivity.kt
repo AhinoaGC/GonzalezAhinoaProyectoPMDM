@@ -22,9 +22,7 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.A
 import android.text.TextUtils
 import androidx.constraintlayout.widget.ConstraintLayout
 import android.widget.TextView
-
-
-
+import androidx.appcompat.app.AppCompatDelegate
 
 
 class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListener {
@@ -38,7 +36,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         super.onCreate(savedInstanceState)
         binding = ActivityDetallePeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
         setTitle(pelicula.titulo)

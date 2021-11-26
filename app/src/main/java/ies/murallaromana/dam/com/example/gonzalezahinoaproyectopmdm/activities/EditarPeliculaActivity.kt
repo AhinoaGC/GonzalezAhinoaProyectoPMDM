@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityEditarPeliculaBinding
@@ -24,7 +25,7 @@ class EditarPeliculaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditarPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         //Intent para coger una imagen de la galería
         binding.btImagen.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)

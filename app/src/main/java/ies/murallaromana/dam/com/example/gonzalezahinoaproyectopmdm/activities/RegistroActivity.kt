@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
@@ -25,7 +26,7 @@ class RegistroActivity : AppCompatActivity() {
         setContentView(binding.root)
         setTitle("Registrarse")
         pre = DatosPreferences(applicationContext)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         binding.btGuardar.setOnClickListener{
 //            val intent = Intent(this, LoginActivity::class.java)

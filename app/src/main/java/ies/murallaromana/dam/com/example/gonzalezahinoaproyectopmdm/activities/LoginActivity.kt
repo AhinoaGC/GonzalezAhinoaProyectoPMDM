@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityLoginBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 
@@ -18,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         setTitle("Iniciar Sesión")
         pre = DatosPreferences(applicationContext)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val nombre = pre.recuperarDatos("nombre")
         val contraseña = pre.recuperarDatos("contraseña")
