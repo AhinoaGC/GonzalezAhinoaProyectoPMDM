@@ -1,12 +1,15 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
@@ -35,14 +38,43 @@ class ListaActivity : AppCompatActivity() {
 //        val listaPeliculas = peliculasDao.getTodos()
         lista = peliculas
         val layoutManager = LinearLayoutManager(this)
-        adapters = listaPeliculasAdapters(lista, this)
+        adapters = listaPeliculasAdapters(peliculas, this)
 
         binding.rvListaPeliculas.layoutManager = layoutManager
         binding.rvListaPeliculas.adapter = adapters
 
-        val intent = Intent(this, CrearPeliculaActivity::class.java)
+
         binding.fbMas.setOnClickListener {
+            if(binding.fbAdd.visibility==View.GONE){
+                binding.fbSalir.show()
+                binding.fbAdd.show()
+                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_remove_24))
+            }else{
+                binding.fbSalir.hide()
+                binding.fbAdd.hide()
+                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_add_24))
+
+            }
+
+        }
+
+        binding.fbAdd.setOnClickListener {
+            val intent = Intent(this, CrearPeliculaActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.fbSalir.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("¿Quieres cerrar sesión?")
+            builder.setIcon(R.drawable.ic_baseline_login_24)
+            builder.setPositiveButton("Cancelar") { dialog, which ->
+                Toast.makeText(this, "No se ha cerrado la sesión.", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("Salir") { dialog, which ->
+                Toast.makeText(this, "Sesión cerrrada.", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            builder.show()
         }
     }
 
@@ -58,7 +90,7 @@ class ListaActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 adapters.getFilter().filter(newText)
-                adapters!!.notifyDataSetChanged()
+//                adapters!!.notifyDataSetChanged()
                 return false
             }
         })
