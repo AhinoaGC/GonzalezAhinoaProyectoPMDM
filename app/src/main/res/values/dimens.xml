@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margen_pantalla_default">16dp</dimen>
+    <dimen name="padding_default">16dp</dimen>
     <dimen name="height_text">39dp</dimen>
+    <dimen name="margin_default">10dp</dimen>
+    <dimen name="edit_width">194dp</dimen>
+    <dimen name="edit_height">40dp</dimen>
+    <dimen name="edit_detalle_width">237dp</dimen>
+
+
 </resources>

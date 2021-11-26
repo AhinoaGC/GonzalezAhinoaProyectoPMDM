@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">#ff8a80</item>
         <item name="colorPrimaryVariant">#c85a54</item>
-        <item name="colorOnPrimary">#ffbcaf</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#ff8a80</item>
         <item name="colorSecondaryVariant">#c85a54</item>

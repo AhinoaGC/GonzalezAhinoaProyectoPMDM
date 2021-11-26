@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ListaActivity"
-    android:padding="16dp"
+    android:padding="@dimen/padding_default"
     android:background="@mipmap/fono02">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,7 +25,6 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-
             android:contentDescription="Añadir"
             android:src="@android:drawable/ic_input_add"
             app:layout_constraintBottom_toBottomOf="parent"

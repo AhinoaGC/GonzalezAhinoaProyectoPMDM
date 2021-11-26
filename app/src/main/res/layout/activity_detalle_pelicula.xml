@@ -49,47 +49,59 @@
 
             <TextView
                 android:id="@+id/tvGeneroPelicula"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/edit_detalle_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="@dimen/padding_default"
+                android:layout_marginTop="@dimen/padding_default"
+                android:text="@string/titulo"
                 android:textColor="@color/black"
-                android:text="TextView"
-                android:textSize="20dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/imP"
+                android:layout_width="128dp"
+                android:layout_height="181dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.912"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
             <TextView
                 android:id="@+id/tvAno"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/edit_detalle_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/black"
-                android:textSize="20dp"
+                android:layout_marginStart="@dimen/padding_default"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/tvDirectorPelicula"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDirectorPelicula" />
 
             <TextView
                 android:id="@+id/tvDirectorPelicula"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/edit_detalle_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/padding_default"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/tvGeneroPelicula"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
 
             <RatingBar
                 android:id="@+id/estrellas"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="211dp"
                 android:layout_height="69dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:contentDescription="Estrellas"
                 android:isIndicator="true"
                 android:max="5"
@@ -98,24 +110,21 @@
                 android:progressTint="#efb810"
                 android:secondaryProgressTint="#efb810"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGeneroPelicula" />
+                app:layout_constraintTop_toBottomOf="@+id/tvAno" />
 
             <TextView
                 android:id="@+id/tvResumen"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="24dp"
+                android:layout_margin="@dimen/margin_default"
                 android:background="@color/white"
-                android:padding="16dp"
+                android:padding="@dimen/padding_default"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/estrellas" />
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/tcMostrarMas"
@@ -128,6 +137,20 @@
                 app:layout_constraintHorizontal_bias="0.042"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvResumen" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Sinopsis: "
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/estrellas" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

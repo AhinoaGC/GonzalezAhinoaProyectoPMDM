@@ -43,6 +43,7 @@ class ListaActivity : AppCompatActivity() {
         binding.rvListaPeliculas.layoutManager = layoutManager
         binding.rvListaPeliculas.adapter = adapters
 
+        
 
         binding.fbMas.setOnClickListener {
             if(binding.fbAdd.visibility==View.GONE){

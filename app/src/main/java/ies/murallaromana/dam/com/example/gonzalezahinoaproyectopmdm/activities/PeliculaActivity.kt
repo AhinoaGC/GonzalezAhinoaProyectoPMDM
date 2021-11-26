@@ -46,13 +46,13 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
         youTubePlayerFragment.initialize(api_key, this)
 
-        binding.tvGeneroPelicula.text = pelicula.genero
-        binding.tvDirectorPelicula.text = pelicula.director
+        binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
+        binding.tvDirectorPelicula.text = "Director: "+pelicula.director
         binding.tvAno.text = "Año: " + pelicula.ano
 //        binding.tvDuracion.text = "Duración: " + pelicula.duracion
         binding.tvResumen.text = pelicula.resumen
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
-//        Picasso.get().load(pelicula.url).into(binding.imPelicula)
+        Picasso.get().load(pelicula.url).into(binding.imP)
 
 //        binding.tcMostrarMas.setOnClickListener{
 //            val height = "wrap_content" //your textview height

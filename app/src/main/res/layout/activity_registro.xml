@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/fono01"
-    android:padding="16dp"
+    android:padding="@dimen/padding_default"
     android:layout_gravity="center"
     >
         <androidx.constraintlayout.widget.ConstraintLayout

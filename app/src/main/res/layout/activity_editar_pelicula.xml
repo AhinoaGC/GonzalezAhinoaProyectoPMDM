@@ -17,7 +17,7 @@
             android:id="@+id/estrellas2"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="183dp"
-            android:layout_height="38dp"
+            android:layout_height="@dimen/edit_height"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="20dp"
             android:contentDescription="Estrellas"
@@ -42,9 +42,9 @@
             tools:srcCompat="@tools:sample/avatars" />
         <EditText
             android:id="@+id/eUrlVideo"
-            android:layout_width="195dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:layout_marginTop="36dp"
             android:ems="10"
             android:hint="Video"
@@ -55,9 +55,9 @@
 
         <EditText
             android:id="@+id/etTitulo"
-            android:layout_width="194dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:cursorVisible="true"
             android:ems="10"
             android:hint="Titulo"
@@ -67,9 +67,9 @@
 
         <EditText
             android:id="@+id/edGenero"
-            android:layout_width="196dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:ems="10"
             android:hint="@string/genero"
             android:inputType="textPersonName"
@@ -78,9 +78,9 @@
 
         <EditText
             android:id="@+id/edDirector"
-            android:layout_width="196dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:ems="10"
             android:hint="Director"
             android:inputType="textPersonName"
@@ -89,9 +89,9 @@
 
         <EditText
             android:id="@+id/etAno"
-            android:layout_width="196dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:ems="10"
             android:hint="Año"
             android:inputType="textPersonName"
@@ -100,9 +100,9 @@
 
         <EditText
             android:id="@+id/etDuracion"
-            android:layout_width="195dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_marginStart="@dimen/padding_default"
             android:ems="10"
             android:hint="Duración"
             android:inputType="textPersonName"
@@ -146,7 +146,6 @@
             android:layout_height="39dp"
             android:layout_marginTop="164dp"
             android:clickable="true"
-
             app:fabSize="mini"
             app:layout_constraintEnd_toEndOf="@+id/imP"
             app:layout_constraintTop_toTopOf="@+id/imP"

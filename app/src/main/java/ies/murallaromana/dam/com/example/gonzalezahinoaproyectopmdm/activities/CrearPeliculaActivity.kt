@@ -26,6 +26,8 @@ class CrearPeliculaActivity : AppCompatActivity() {
         binding = ActivityCrearPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         //Botón para guardar las peliculas creadas
         binding.brGuardarPelicula.setOnClickListener {
             val titulo = binding.etTitulo.text.toString()
