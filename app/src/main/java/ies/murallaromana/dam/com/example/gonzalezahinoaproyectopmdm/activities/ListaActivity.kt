@@ -25,7 +25,6 @@ class ListaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaBinding
     private lateinit var adapters: listaPeliculasAdapters
-    private lateinit var lista: ArrayList<Pelicula>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +32,12 @@ class ListaActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle("PopFilms")
-//        supportActionBar?.hide()
 
-//        val peliculasDao = PeliculasDaoMockImpl()
-//        val listaPeliculas = peliculasDao.getTodos()
-        lista = peliculas
         val layoutManager = LinearLayoutManager(this)
         adapters = listaPeliculasAdapters(peliculas, this)
 
         binding.rvListaPeliculas.layoutManager = layoutManager
         binding.rvListaPeliculas.adapter = adapters
-
-        
 
         binding.fbMas.setOnClickListener {
             if(binding.fbAdd.visibility==View.GONE){
@@ -92,7 +85,7 @@ class ListaActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 adapters.getFilter().filter(newText)
-//                adapters!!.notifyDataSetChanged()
+                adapters!!.notifyDataSetChanged()
                 return false
             }
         })
@@ -106,8 +99,6 @@ class ListaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-//        val adapter = listaPeliculasAdapters(peliculas, this)
         adapters!!.notifyDataSetChanged()
-        binding.rvListaPeliculas.adapter = adapters
     }
 }

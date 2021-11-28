@@ -18,18 +18,15 @@ import android.view.View.OnLongClickListener
 import android.widget.*
 
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.EditarPeliculaActivity
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App
 import java.util.stream.Collectors
 
 
 class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Context) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
-    var list:ArrayList<Pelicula>
-
-    init {
-        list= ArrayList()
-        list.addAll(peliculas)
-    }
+    var listaCompleta : ArrayList<Pelicula> = App.peliculas
+    lateinit var listaFiltroActual: ArrayList<Pelicula>
 
     class PersonajesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTitulo = itemView.findViewById<TextView>(R.id.tvTitulo)
@@ -85,31 +82,32 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
     }
 
     override fun getFilter(): Filter {
-//        https://rrtutors.com/android-SearchView-filter
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
-                var listFilter=ArrayList<Pelicula>();
+
                 if(p0==null||p0.isEmpty())
                 {
-                    listFilter.addAll(peliculas)
+                    listaFiltroActual.addAll(listaCompleta)
                 }else
                 {
                     val filterPattern: String = p0.toString().toLowerCase().trim()
                     for (item in peliculas) {
                         if (item.titulo.toLowerCase().contains(filterPattern)) {
-                            listFilter.add(item)
+                            listaFiltroActual.add(item)
                         }
                     }
                 }
                 val results = FilterResults()
-                results.values = listFilter
-                return  results;
+                results.values = listaFiltroActual
+                return  results
             }
+
+
 
             override fun publishResults(p0: CharSequence?, p1: Filter.FilterResults?) {
 
-                list.clear()
-                list.addAll(p1?.values as Collection<Pelicula>)
+                peliculas.clear()
+                peliculas.addAll(p1?.values as Collection<Pelicula>)
                 notifyDataSetChanged()
             }
         }

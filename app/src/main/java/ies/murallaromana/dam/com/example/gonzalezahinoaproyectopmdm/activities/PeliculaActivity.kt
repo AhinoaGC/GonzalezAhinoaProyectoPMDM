@@ -4,10 +4,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import android.view.Window
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
@@ -20,8 +18,6 @@ import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import android.text.TextUtils
-import androidx.constraintlayout.widget.ConstraintLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 
 
@@ -51,12 +47,6 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         binding.tvResumen.text = pelicula.resumen
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
         Picasso.get().load(pelicula.url).into(binding.imP)
-
-//        binding.tcMostrarMas.setOnClickListener{
-//            val height = "wrap_content" //your textview height
-//
-//            binding.tvResumen.layoutParams.height = height
-//        }
     }
 
 
