@@ -29,7 +29,6 @@ class RegistroActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         binding.btGuardar.setOnClickListener{
-//            val intent = Intent(this, LoginActivity::class.java)
             val validacion = validarDatos()
 
             if (validacion) {
@@ -38,7 +37,6 @@ class RegistroActivity : AppCompatActivity() {
 
                 pre.guardar(usuario, contraseña)
                 Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
-//                startActivity(intent)
                 onBackPressed()
             }
         }
@@ -54,7 +52,7 @@ class RegistroActivity : AppCompatActivity() {
         val contraseña = binding.editContrasenha.text.toString()
 
         if (validarEmail(binding.editCorreo.text.toString()) == false) {
-            Toast.makeText(this, "Email incorrecto", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Email incorrecto.", Toast.LENGTH_SHORT)
                 .show()
             return false
         } else if (contraseña.length < 5) {

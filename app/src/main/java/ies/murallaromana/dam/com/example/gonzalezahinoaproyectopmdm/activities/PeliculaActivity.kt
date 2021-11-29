@@ -43,7 +43,6 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
         binding.tvDirectorPelicula.text = "Director: "+pelicula.director
         binding.tvAno.text = "Año: " + pelicula.ano
-//        binding.tvDuracion.text = "Duración: " + pelicula.duracion
         binding.tvResumen.text = pelicula.resumen
         binding.estrellas.rating = pelicula.puntuacion.toFloat()
         Picasso.get().load(pelicula.url).into(binding.imP)
