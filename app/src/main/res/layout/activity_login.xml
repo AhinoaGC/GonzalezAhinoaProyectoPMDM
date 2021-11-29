@@ -28,7 +28,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:hint="Correo electrónico"
+            android:hint="@string/user"
             android:layout_marginTop="10dp"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
             android:layout_width="300dp"
             android:layout_height="59dp"
             android:layout_marginTop="@dimen/padding_default"
-            android:text="Iniciar Sesión"
+            android:text="@string/iniciar"
             android:backgroundTint="#c85a54"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,12 +76,10 @@
               android:layout_width="228dp"
               android:layout_height="21dp"
               android:layout_marginTop="5dp"
-              android:text="¿No tienes una cuenta? Crea una"
+              android:text="@string/crear"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/btAceptar" />
-
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilCorreo"
@@ -89,12 +87,12 @@
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
-                    android:hint="Contraseña"
+                    android:hint="@string/pass"
                     android:textColorHint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilGenero"
-                    app:startIconContentDescription="Contraseña"
+                    app:startIconContentDescription="@string/pass"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
                     <com.google.android.material.textfield.TextInputEditText

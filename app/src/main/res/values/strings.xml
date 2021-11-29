@@ -2,6 +2,20 @@
     <string name="app_name">PopFilms</string>
     <string name="titulo">Titulo</string>
     <string name="genero">Género</string>
-    <string name="director">Género</string>
-    <string name="ano">Género</string>
+    <string name="director">Director</string>
+    <string name="ano">Año</string>
+    <string name="duracion">Duración</string>
+    <string name="video">Video</string>
+    <string name="sinopsis">Sinopsis</string>
+    <string name="sinopsis2">Sinopsis: </string>
+
+    <string name="user">Usuario</string>
+    <string name="pass">Contraseña</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="crear">¿No tienes una cuenta? Crea una</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="telefono">Teléfono</string>
+    <string name="guardar">Guardar</string>
+    <string name="name">Nombre</string>
+    <string name="apell">Apellidos</string>
 </resources>
