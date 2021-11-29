@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityLoginBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 
@@ -25,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val nombre = pre.recuperarDatos("nombre")
         val contraseña = pre.recuperarDatos("contraseña")
 
-        binding.tieEmail.setText(nombre)
+        binding.tieUser.setText(nombre)
         binding.tieCont.setText(contraseña)
 
 
@@ -35,19 +36,18 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btAceptar.setOnClickListener{
-
-            if (binding.tieEmail.text.toString().length==0 || binding.tieCont.text.toString().length==0 ){
-
-                val adb = AlertDialog.Builder(this)
-                adb.setTitle("Datos incorrectos")
-                adb.setMessage("El usuario y/o la contraseña están vacíos.")
-                adb.setPositiveButton("Aceptar") { dialog, which ->}
-                adb.show()
+            if (binding.tieUser.text.toString().length==0 || binding.tieCont.text.toString().length==0 ){
+                val build = AlertDialog.Builder(this)
+                build.setTitle("Datos incorrectos")
+                build.setIcon(R.drawable.ic_baseline_error_24)
+                build.setMessage("Usuario y/o contraseña vacíos.")
+                build.setPositiveButton("Aceptar") { dialog, which ->}
+                build.show()
             }
-            else if (!nombre.equals(binding.tieEmail.text.toString())) {
-                binding.tieEmail.setError("El usuario no existe")
+            else if (!nombre.equals(binding.tieUser.text.toString())) {
+                binding.tieUser.setError("Usuario incorrecto")
             } else if (!contraseña.equals(binding.tieCont.text.toString())) {
-                binding.tieCont.setError("La contraseña no es correcta")
+                binding.tieCont.setError("Contraseña incorrecta")
             } else {
                 val lista = Intent(this, ListaActivity::class.java)
                 startActivity(lista)
@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
         val nombre = pre.recuperarDatos("nombre")
         val contraseña = pre.recuperarDatos("contraseña")
 
-        binding.tieEmail.setText(nombre)
+        binding.tieUser.setText(nombre)
         binding.tieCont.setText(contraseña)
 
 
@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btAceptar.setOnClickListener{
 
-            if (binding.tieEmail.text.toString().length==0 || binding.tieCont.text.toString().length==0 ){
+            if (binding.tieUser.text.toString().length==0 || binding.tieCont.text.toString().length==0 ){
 
                 val adb = AlertDialog.Builder(this)
                 adb.setTitle("Datos incorrectos")
@@ -79,8 +79,8 @@ class LoginActivity : AppCompatActivity() {
                 adb.setPositiveButton("Aceptar") { dialog, which ->}
                 adb.show()
             }
-            else if (!nombre.equals(binding.tieEmail.text.toString())) {
-                binding.tieEmail.setError("El usuario no existe")
+            else if (!nombre.equals(binding.tieUser.text.toString())) {
+                binding.tieUser.setError("El usuario no existe")
             } else if (!contraseña.equals(binding.tieCont.text.toString())) {
                 binding.tieCont.setError("La contraseña no es correcta")
             } else {

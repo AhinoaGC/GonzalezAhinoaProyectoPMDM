@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilGenero"
+            android:id="@+id/tilUser"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="60dp"
@@ -35,10 +35,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:startIconContentDescription="Email"
-            app:startIconDrawable="@drawable/ic_baseline_alternate_email_24">
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieEmail"
+                android:id="@+id/tieUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
@@ -91,7 +91,7 @@
                     android:textColorHint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tilGenero"
+                    app:layout_constraintTop_toBottomOf="@+id/tilUser"
                     app:startIconContentDescription="@string/pass"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
