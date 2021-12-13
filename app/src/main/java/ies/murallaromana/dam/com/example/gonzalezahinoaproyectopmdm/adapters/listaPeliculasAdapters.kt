@@ -25,7 +25,7 @@ import java.util.stream.Collectors
 class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Context) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
-    var listaCompleta : ArrayList<Pelicula> = App.peliculas
+    var listaCompleta : ArrayList<Pelicula> = ArrayList(App.peliculas)
     lateinit var listaFiltroActual: ArrayList<Pelicula>
 
     class PersonajesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,7 +34,6 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
         val ivFoto = itemView.findViewById<ImageView>(R.id.ivFoto)
         val cardView = itemView.findViewById<CardView>(R.id.cardView)
         val estrellas = itemView.findViewById<RatingBar>(R.id.ratingBar)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajesViewHolder {
@@ -91,8 +90,8 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
                 }else
                 {
                     val filterPattern: String = p0.toString().toLowerCase().trim()
-                    for (item in peliculas) {
-                        if (item.titulo.toLowerCase().contains(filterPattern)) {
+                    for (item in listaCompleta) {
+                        if (item.titulo.lowercase().contains(filterPattern)) {
                             listaFiltroActual.add(item)
                         }
                     }

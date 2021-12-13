@@ -41,6 +41,10 @@ class RegistroFragment : Fragment() {
 
                 pre.guardar(usuario, contraseña)
                 Toast.makeText(vi.context, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+                val ft= activity?.supportFragmentManager?.beginTransaction()
+                ft?.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
+                ft?.replace(R.id.contenedorFragment,RegistroFragment())
+                ft?.commit()
             }
         }
         return vi
