@@ -23,14 +23,17 @@
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_detalle_pelicula.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_editar_pelicula.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_lista.xml" value="0.33" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_lista2.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_main.xml" value="0.2898550724637681" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_pelicula.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_registro.xml" value="0.33605072463768115" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/activity_segunda.xml" value="0.36666666666666664" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/cabecera_nav.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/fragment_registro.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/layout/item_pelicula.xml" value="0.33" />
+        <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/menu/menu_detalle_pelicula.xml" value="0.36666666666666664" />
         <entry key="..\:/goncaaahi/GonzalezAhinoaProyectoPMDM/app/src/main/res/menu/menu_lista.xml" value="0.5" />
       </map>

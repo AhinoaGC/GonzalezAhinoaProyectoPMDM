@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_create_24"
+            android:title="Editar" />
+        <item
+            android:id="@+id/nav_web_tools"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="Crear" />
+    </group>
+
+    <group
+        android:id="@+id/third_section"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_baseline_check_24"
+            android:title="Otro" />
+    </group>
+</menu>
