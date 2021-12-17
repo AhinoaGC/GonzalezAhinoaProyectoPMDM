@@ -52,8 +52,6 @@ class ListaActivity : AppCompatActivity() {
             }
 
         }
-        //TODO
-        //https://dev4phones.wordpress.com/2020/10/20/crear-un-navigation-drawer-menu-lateral-en-android-usando-kotlin/
 
         binding.fbAdd.setOnClickListener {
             val intent = Intent(this, CrearPeliculaActivity::class.java)

@@ -41,7 +41,6 @@ class LoginFragment : Fragment() {
         tieUser.setText(nombre)
         tieCont.setText(contraseña)
 
-
         tvPantallaRegistro.setOnClickListener{
             val ft= activity?.supportFragmentManager?.beginTransaction()
             ft?.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
