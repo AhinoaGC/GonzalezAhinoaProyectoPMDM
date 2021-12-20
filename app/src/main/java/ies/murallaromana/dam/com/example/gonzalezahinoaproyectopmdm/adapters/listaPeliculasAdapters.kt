@@ -83,7 +83,7 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
-
+                listaFiltroActual = ArrayList()
                 if(p0==null||p0.isEmpty())
                 {
                     listaFiltroActual.addAll(listaCompleta)
@@ -103,10 +103,10 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
 
 
 
-            override fun publishResults(p0: CharSequence?, p1: Filter.FilterResults?) {
+            override fun publishResults(texto: CharSequence?, filtro: Filter.FilterResults?) {
 
                 peliculas.clear()
-                peliculas.addAll(p1?.values as Collection<Pelicula>)
+                peliculas.addAll(filtro?.values as Collection<Pelicula>)
                 notifyDataSetChanged()
             }
         }
