@@ -32,7 +32,7 @@ Lenguaje de programación: Kotlin
 
 ## Herramientas
 
-**[Picasso](https://square.github.io/picasso/)**-
+**[Picasso](https://square.github.io/picasso/)**
 
 ## Autor
 
