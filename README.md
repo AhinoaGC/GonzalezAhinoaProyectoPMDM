@@ -32,4 +32,4 @@ Lenguaje de programación: Kotlin
 
 ## Autor
 
-**Ahinoa González Caamaño**- [GitHub Page](https://github.com/AhinoaGC)
+**Ahinoa González Caamaño**- [AhinoaGC](https://github.com/AhinoaGC)
