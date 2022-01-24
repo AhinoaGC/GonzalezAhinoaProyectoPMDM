@@ -1,7 +1,6 @@
 # GonzalezAhinoaProyectoPMDM
 Proyecto de Programación de dispositivos móviles de Ahinoa González. App Android de peliculas.
 
-## General
 
 ## Instalación
 
@@ -10,7 +9,7 @@ Versión mínima de SDK: 22
 Lenguaje de programación: Kotlin
 
 
-###### Imagenes de la App
+## Imagenes de la App
 
 **Pantalla de inicio:**
 
