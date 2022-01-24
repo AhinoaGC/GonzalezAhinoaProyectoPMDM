@@ -1,4 +1,4 @@
-# GonzalezAhinoaProyectoPMDM
+# Proyecto PMDM Ahinoa
 Proyecto de Programación de dispositivos móviles de Ahinoa González. App Android de peliculas.
 
 
@@ -29,3 +29,7 @@ Lenguaje de programación: Kotlin
 **Pantalla de detalle:**
 
 ![Pantalla detalle](https://github.com/AhinoaGC/GonzalezAhinoaProyectoPMDM/blob/main/imagenesReadme/detalle.PNG)
+
+## Autor
+
+**Ahinoa González Caamaño**- [GitHub Page](https://github.com/AhinoaGC)
