@@ -30,6 +30,10 @@ Lenguaje de programación: Kotlin
 
 ![Pantalla detalle](https://github.com/AhinoaGC/GonzalezAhinoaProyectoPMDM/blob/main/imagenesReadme/detalle.PNG)
 
+## Herramientas
+
+**[Picasso](https://square.github.io/picasso/)**-
+
 ## Autor
 
 **Ahinoa González Caamaño**- [AhinoaGC](https://github.com/AhinoaGC)
