@@ -9,7 +9,7 @@ Versión mínima de SDK: 22
 
 **Imagenes de la App**
 
-![Pantalla inicial](D:\goncaaahi\GonzalezAhinoaProyectoPMDM\imagenesReadme\login.PNG)
+![Pantalla inicial](https://github.com/AhinoaGC/GonzalezAhinoaProyectoPMDM/blob/main/imagenesReadme/login.PNG)
 
 ![Pantalla registro](D:\goncaaahi\GonzalezAhinoaProyectoPMDM\imagenesReadme\registro.PNG)
 
