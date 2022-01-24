@@ -3,11 +3,12 @@ Proyecto de Programación de dispositivos móviles de Ahinoa González. App Andr
 
 ## General
 
-**Intalación**
+######**Instalación**
+
 Versión mínima de SDK: 22
 
 
-**Imagenes de la App**
+######**Imagenes de la App**
 
 Pantalla de inicio:
 
