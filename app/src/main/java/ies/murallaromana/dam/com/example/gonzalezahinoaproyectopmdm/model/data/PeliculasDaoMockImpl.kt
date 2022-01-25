@@ -10,6 +10,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
         list.addAll(listOf(
             Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "Expediente Warren: The Conjuring",
                 "Terror",
                 "James Wan",
@@ -26,6 +27,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
 
             ),
             Pelicula(
+                "633 75 57 174",
                 "633 75 57 174",
                 "La llegada",
                 "Ciencia ficción",
@@ -44,6 +46,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
             ),
             Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "Mad Max: Furia en la carretera",
                 "Ciencia ficción",
                 "George Miller",
@@ -60,6 +63,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "hEJnMQG9ev8"
             ),
             Pelicula(
+                "633 75 57 174",
                 "633 75 57 174",
                 "Al filo del mañana",
                 "Ciencia ficción",
@@ -78,6 +82,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
             ),
             Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "Venom: Habrá matanza",
                 "Ciencia ficción",
                 "Andy Serkis",
@@ -92,6 +97,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
             ),
             Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "La familia Addams 2: La gran escapada",
                 "Aniación, Comedia",
                 "Conrad Vernon",
@@ -105,6 +111,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
             ),
             Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "Encanto",
                 "Animación, Aventura",
                 "Jared Bush",
@@ -117,6 +124,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
 
             ),Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "House of Gucci",
                 "Drama",
                 "Conrad Vernon",
@@ -127,6 +135,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "Drama criminal en torno al asesinato en 1995 de Maurizio Gucci, nieto del fundador del imperio de la moda Gucci, que apareció asesinado por orden de su exmujer Patrizia Reggiani, conocida como la \"viuda negra de Italia\". Adaptación del libro de Sara Gay Forden, publicado en 2001, 'The House of Gucci: A Sensational Story of Murder, Madness, Glamour, and Greed'.",
                 "s1rOhrqGYjw"
             ),Pelicula(
+                "633 75 57 174",
                 "633 75 57 174",
                 "El refugio",
                 "Comedia",
@@ -140,6 +149,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
 
             ),Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "El chico que salvó la Navidad",
                 "Cine familiar. Navidad",
                 "Gil Kenan",
@@ -152,6 +162,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
 
             ),Pelicula(
                 "633 75 57 174",
+                "633 75 57 174",
                 "La puerta de al lado",
                 "Drama,Comedia",
                 "Daniel Brühl",
@@ -163,6 +174,7 @@ class PeliculasDaoMockImpl : PeliculasDao {
                 "5a2kqx2bqMs"
 
             ),Pelicula(
+                "633 75 57 174",
                 "633 75 57 174",
                 "Shang-Chi y la leyenda de los diez anillos",
                 "Fantástico, Acción",

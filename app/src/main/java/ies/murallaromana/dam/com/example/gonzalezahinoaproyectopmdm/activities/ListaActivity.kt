@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,9 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ClienteRetrofit
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -32,6 +37,22 @@ class ListaActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle("PopFilms")
+
+        val llamadaApi: Call<List<Pelicula>> = ClienteRetrofit.apiRetrofit.getPeliculas()
+        llamadaApi.enqueue(object: Callback<List<Pelicula>> {
+            override fun onResponse(
+                call: Call<List<Pelicula>>,
+                response: Response<List<Pelicula>>
+            ) {
+                Toast.makeText(applicationContext,response.body().toString(),Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
+                Log.d("PRUEBA",t.message.toString())
+            }
+        })
+
+
 
         val layoutManager = LinearLayoutManager(this)
         adapters = listaPeliculasAdapters(peliculas, this)
