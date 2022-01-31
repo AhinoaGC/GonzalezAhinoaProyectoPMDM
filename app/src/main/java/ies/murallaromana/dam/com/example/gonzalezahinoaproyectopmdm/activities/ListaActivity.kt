@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ClienteRetrofit
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
@@ -23,6 +24,8 @@ import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,6 +40,15 @@ class ListaActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle("PopFilms")
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+            .build()
+
+        val apiService = retrofit.create(ApiService::class.java)
+        //token de prueba
+        apiService.getAll("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjc5YmY4ODgxM2Q2ZTRlNDVmZWQzMSIsImlhdCI6MTY0MzYxNzI5NCwiZXhwIjoxNjQzNzAzNjk0fQ.DNwkZoMY88o9N3bQ2vNWNVHJmA2bQTJLATVfdcT2zx4")
 
         val llamadaApi: Call<List<Pelicula>> = ClienteRetrofit.apiRetrofit.getPeliculas()
         llamadaApi.enqueue(object: Callback<List<Pelicula>> {
