@@ -9,7 +9,6 @@ import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.squareup.picasso.Picasso
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityEditarPeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
@@ -54,7 +53,7 @@ class EditarPeliculaActivity : AppCompatActivity() {
             val ano = binding.etAno.text.toString()
             val resumen = binding.etResumen.text.toString()
             val video = binding.eUrlVideo.text.toString()
-            peliculaNueva=Pelicula("75757",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
+            peliculaNueva=Pelicula("75757","345345",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
             peliculas.remove(pelicula)
             peliculas.add(peliculaNueva)
             Toast.makeText(this, "Pelicula guardada", Toast.LENGTH_SHORT).show()

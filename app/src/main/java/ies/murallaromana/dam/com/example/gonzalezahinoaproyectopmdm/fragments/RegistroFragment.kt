@@ -44,7 +44,7 @@ class RegistroFragment : Fragment() {
         editCorreo=vi.findViewById(R.id.editCorreo)
 
         btGuardar.setOnClickListener{
-                val email = editNombre.text.toString().trim()
+                val email = editCorreo.text.toString().trim()
                 val contraseña = editContrasenha.text.toString().trim()
 
             val u = User(null,email, contraseña)
@@ -77,7 +77,7 @@ class RegistroFragment : Fragment() {
             })
                 val ft= activity?.supportFragmentManager?.beginTransaction()
                 ft?.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
-                ft?.replace(R.id.contenedorFragment,RegistroFragment())
+                ft?.replace(R.id.contenedorFragment,LoginFragment())
                 ft?.commit()
         }
         return vi

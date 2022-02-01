@@ -41,7 +41,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
             val resumen = binding.etResumen.text.toString()
             val video = binding.eUrlVideo.text.toString()
 
-            pelicula= Pelicula("75757",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
+            pelicula= Pelicula("75757","676767676",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
             peliculas.add(pelicula)
             Toast.makeText(this, "Pelicula creada", Toast.LENGTH_SHORT).show()
             finish()

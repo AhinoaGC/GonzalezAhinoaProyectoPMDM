@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ClienteRetrofit {
 
     private fun getRetrofit(): Retrofit{
-        val retrofit = Retrofit.Builder().baseUrl("https://damapi.herokuapp.com/api/v1").addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://damapi.herokuapp.com/api/v1/").addConverterFactory(
             GsonConverterFactory.create()).build()
 
         return retrofit

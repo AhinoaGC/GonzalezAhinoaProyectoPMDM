@@ -48,7 +48,7 @@ class ListaActivity : AppCompatActivity() {
 
         val apiService = retrofit.create(ApiService::class.java)
         //token de prueba
-        apiService.getAll("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjc5YmY4ODgxM2Q2ZTRlNDVmZWQzMSIsImlhdCI6MTY0MzYxNzI5NCwiZXhwIjoxNjQzNzAzNjk0fQ.DNwkZoMY88o9N3bQ2vNWNVHJmA2bQTJLATVfdcT2zx4")
+        //apiService.getAll("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjc5YmY4ODgxM2Q2ZTRlNDVmZWQzMSIsImlhdCI6MTY0MzYxNzI5NCwiZXhwIjoxNjQzNzAzNjk0fQ.DNwkZoMY88o9N3bQ2vNWNVHJmA2bQTJLATVfdcT2zx4")
 
         val llamadaApi: Call<List<Pelicula>> = ClienteRetrofit.apiRetrofit.getPeliculas()
         llamadaApi.enqueue(object: Callback<List<Pelicula>> {
