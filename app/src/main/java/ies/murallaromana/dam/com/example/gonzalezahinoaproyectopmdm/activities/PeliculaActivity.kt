@@ -18,7 +18,15 @@ import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListener {
@@ -26,6 +34,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
 
     private lateinit var pelicula: Pelicula
     private lateinit var binding: ActivityDetallePeliculaBinding
+    private  lateinit var pre: DatosPreferences
     val api_key =  "AIzaSyDloPeo-4_YVthgz5zeOUakEesajpYItrI"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +44,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         pelicula = intent.extras?.get("pelicula") as Pelicula
+        pre = DatosPreferences(this)
         setTitle(pelicula.titulo)
 
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
@@ -75,7 +85,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
                     Toast.makeText(this, "La pelicula no se ha borrado.", Toast.LENGTH_SHORT).show()
                 }
                 builder.setNegativeButton("Borrar") { dialog, which ->
-                    peliculas.remove(pelicula)
+                    borrarPelicula()
                     Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
                     finish()
                 }
@@ -101,5 +111,33 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         p1: YouTubeInitializationResult?
     ) {
         Toast.makeText(this@PeliculaActivity, "Error al cargar video.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun borrarPelicula(){
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+            .build()
+
+        val token=pre.recuperarToken()
+        val service: ApiService = retrofit.create(ApiService::class.java)
+        val call = service.delete("Bearer" + token,pelicula.id!!)
+
+        call.enqueue(object : Callback<Pelicula> {
+            override fun onFailure(call: Call<Pelicula>, t: Throwable) {
+                Log.d("respuesta: onFailure", t.toString())
+            }
+
+            override fun onResponse(call: Call<Pelicula>, response: Response<Pelicula>) {
+                if (response.code() > 299 || response.code() < 200) {
+                    Toast.makeText(applicationContext,"La pelicula no se ha podido borrar.",Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(applicationContext,"La pelicula ha sido eliminada correctamente.",Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
+        })
+
     }
 }

@@ -6,27 +6,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.squareup.picasso.Picasso
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class CrearPeliculaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCrearPeliculaBinding
-    private val pickImage = 100
-    private var imageUri: Uri? = null
     private lateinit var pelicula: Pelicula
+    private  lateinit var pre: DatosPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        pre = DatosPreferences(this)
 
 
         //Botón para guardar las peliculas creadas
@@ -35,30 +45,37 @@ class CrearPeliculaActivity : AppCompatActivity() {
             val genero = binding.edGenero.text.toString()
             val director = binding.edDirector.text.toString()
             val puntuacion = binding.estrellas2.rating.toString()
-            val imagen = imageUri.toString()
+            val imagen = "https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800"
             val duracion = binding.etDuracion.text.toString()
             val ano = binding.etAno.text.toString()
             val resumen = binding.etResumen.text.toString()
             val video = binding.eUrlVideo.text.toString()
+            val numero = "45345453"
+            pelicula= Pelicula(null,numero,titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
 
-            pelicula= Pelicula("75757","676767676",titulo,genero,director,puntuacion,imagen,duracion,ano,resumen,video)
-            peliculas.add(pelicula)
-            Toast.makeText(this, "Pelicula creada", Toast.LENGTH_SHORT).show()
-            finish()
-        }
-        //Intent para coger una imagen de la galería
-        binding.btImagen.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, pickImage)
+
+            val token=pre.recuperarToken()
+            val retrofit = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://damapi.herokuapp.com/api/v1/")
+                .build()
+            val service: ApiService = retrofit.create(ApiService::class.java)
+            val call = service.crear("Bearer" + token,pelicula)
+
+            call.enqueue(object : Callback<Unit> {
+                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                    Log.d("respuesta: onFailure", t.toString())
+                }
+
+                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                    if (response.code() > 299 || response.code() < 200) {
+                        Toast.makeText(applicationContext, "Error en la creación", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext, "Pelicula creada", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            })
         }
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK && requestCode == pickImage) {
-            imageUri = data?.data
-            Picasso.get().load(imageUri).into(binding.imP)
-        }
-    }
-
 }

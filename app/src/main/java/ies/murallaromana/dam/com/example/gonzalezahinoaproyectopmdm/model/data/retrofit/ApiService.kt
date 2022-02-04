@@ -13,4 +13,15 @@ interface ApiService {
     @DELETE("movies")
     fun delete(@Header("Authorization:") token: String,
                @Body pelicula: Pelicula): Call<Unit>
+    @POST("movies")
+    fun crear(@Header("Authorization:") token: String,
+              @Body pelicula: Pelicula): Call<Unit>
+
+    @DELETE("movies/{id}")
+    fun delete(@Header("Authorization:") token: String,
+               @Path("id") id:String):Call<Pelicula>
+
+    @GET("movies/{id}?")
+    fun getId(@Header("Authorization:") token: String,
+              @Path("id") id:String?):Call<Pelicula>
 }
