@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ClienteRetrofit
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.UserService
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
@@ -33,6 +35,7 @@ class ListaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaBinding
     private lateinit var adapters: listaPeliculasAdapters
+    private  lateinit var pre: DatosPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,36 +44,34 @@ class ListaActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle("PopFilms")
 
+        pre = DatosPreferences(this)
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://damapi.herokuapp.com/api/v1/")
             .build()
 
-        val apiService = retrofit.create(ApiService::class.java)
-        //token de prueba
-        //apiService.getAll("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjc5YmY4ODgxM2Q2ZTRlNDVmZWQzMSIsImlhdCI6MTY0MzYxNzI5NCwiZXhwIjoxNjQzNzAzNjk0fQ.DNwkZoMY88o9N3bQ2vNWNVHJmA2bQTJLATVfdcT2zx4")
+        val token=pre.recuperarToken()
+        val service: ApiService = retrofit.create(ApiService::class.java)
+        val call = service.getAll("Bearer" + token)
 
-        val llamadaApi: Call<List<Pelicula>> = ClienteRetrofit.apiRetrofit.getPeliculas()
-        llamadaApi.enqueue(object: Callback<List<Pelicula>> {
-            override fun onResponse(
-                call: Call<List<Pelicula>>,
-                response: Response<List<Pelicula>>
-            ) {
-                Toast.makeText(applicationContext,response.body().toString(),Toast.LENGTH_SHORT).show()
+        call.enqueue(object : Callback<List<Pelicula>> {
+            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
+                Log.d("respuesta: onFailure", t.toString())
             }
 
-            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
-                Log.d("PRUEBA",t.message.toString())
+            override fun onResponse(call: Call<List<Pelicula>>, response: Response<List<Pelicula>>) {
+                if (response.code() > 299 || response.code() < 200) {
+                    Toast.makeText(applicationContext, "No se ha podido cargar la lista.", Toast.LENGTH_SHORT).show()
+                } else {
+
+                    val layoutManager = LinearLayoutManager(applicationContext)
+                    val listaPelicula: List<Pelicula>? = response.body()
+                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
+                    binding.rvListaPeliculas.layoutManager = layoutManager
+                    binding.rvListaPeliculas.adapter = adapters
+                }
             }
         })
-
-
-
-        val layoutManager = LinearLayoutManager(this)
-        adapters = listaPeliculasAdapters(peliculas, this)
-
-        binding.rvListaPeliculas.layoutManager = layoutManager
-        binding.rvListaPeliculas.adapter = adapters
 
         binding.fbMas.setOnClickListener {
             if(binding.fbAdd.visibility==View.GONE){
@@ -132,6 +133,6 @@ class ListaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        adapters!!.notifyDataSetChanged()
+//        adapters!!.notifyDataSetChanged()
     }
 }

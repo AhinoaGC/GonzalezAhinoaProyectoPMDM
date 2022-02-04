@@ -22,10 +22,10 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.A
 import java.util.stream.Collectors
 
 
-class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Context) :
+class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Context) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
-    var listaCompleta : ArrayList<Pelicula> = ArrayList(App.peliculas)
+    var listaCompleta : ArrayList<Pelicula> = ArrayList(peliculas)
     lateinit var listaFiltroActual: ArrayList<Pelicula>
 
     class PersonajesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -43,12 +43,12 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
     }
 
     override fun onBindViewHolder(holder: PersonajesViewHolder, position: Int) {
-        val pelicula = peliculas.get(position)
+        val pelicula = peliculas?.get(position)
 
-        holder.tvTitulo.setText(pelicula.titulo)
-        holder.tvGenero.setText("Género: " + pelicula.genero)
-        holder.estrellas.rating = pelicula.puntuacion.toFloat()
-        Picasso.get().load(pelicula.url).into(holder.ivFoto)
+        holder.tvTitulo.setText(pelicula?.titulo)
+        holder.tvGenero.setText("Género: " + pelicula?.genero)
+        holder.estrellas.rating = pelicula?.puntuacion!!.toFloat()
+        Picasso.get().load(pelicula?.url).into(holder.ivFoto)
 
         holder.cardView.setOnClickListener{
             val intent = Intent(context, PeliculaActivity::class.java)
@@ -77,7 +77,7 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
     }
 
     override fun getItemCount(): Int {
-        return peliculas.size
+        return peliculas!!.size
     }
 
     override fun getFilter(): Filter {
@@ -104,10 +104,9 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>, val context: Co
 
 
             override fun publishResults(texto: CharSequence?, filtro: Filter.FilterResults?) {
-
-                peliculas.clear()
-                peliculas.addAll(filtro?.values as Collection<Pelicula>)
-                notifyDataSetChanged()
+//                peliculas.clear()
+//                peliculas.addAll(filtro?.values as Collection<Pelicula>)
+//                notifyDataSetChanged()
             }
         }
     }

@@ -12,7 +12,7 @@ class DatosPreferences (val context: Context) {
 
         }
 
-    fun recuperarToken(token: String): String? {
+    fun recuperarToken(): String? {
             return pref.getString("Token", "")
         }
     }
