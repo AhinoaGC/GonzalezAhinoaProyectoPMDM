@@ -52,6 +52,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
 
         holder.cardView.setOnClickListener{
             val intent = Intent(context, PeliculaActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.putExtra("pelicula", pelicula)
             context.startActivity(intent)
         }
@@ -68,7 +69,6 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
             builder.setNeutralButton("Ver") { dialog, which ->
                 val intent = Intent(context, PeliculaActivity::class.java)
                 intent.putExtra("pelicula", pelicula)
-
                 context.startActivity(intent)
             }
             builder.show()

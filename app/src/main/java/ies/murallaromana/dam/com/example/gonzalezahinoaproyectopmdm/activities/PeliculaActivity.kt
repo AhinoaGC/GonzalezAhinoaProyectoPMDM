@@ -57,7 +57,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_call -> {
-                val phoneNo: String = pelicula.numero
+                val phoneNo: String? = pelicula.numero
                 if (!TextUtils.isEmpty(phoneNo)) {
                     val dial = "tel:$phoneNo"
                     startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(dial)))
@@ -91,7 +91,8 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         player: YouTubePlayer?,
         p2: Boolean
     ) {
-        player?.loadVideo(pelicula.urlVideo)
+        val urlVi = pelicula.urlVideo.substring(pelicula.urlVideo.lastIndexOf("/"))
+        player?.loadVideo(urlVi)
         player?.play()
     }
 
