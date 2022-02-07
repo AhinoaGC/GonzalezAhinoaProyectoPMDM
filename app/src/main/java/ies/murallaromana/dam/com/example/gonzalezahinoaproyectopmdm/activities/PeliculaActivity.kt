@@ -101,9 +101,14 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         player: YouTubePlayer?,
         p2: Boolean
     ) {
-        val urlVi = pelicula.urlVideo.substring(pelicula.urlVideo.lastIndexOf("/"))
-        player?.loadVideo(urlVi)
-        player?.play()
+        if(pelicula.urlVideo!=null){
+            val urlVi = pelicula.urlVideo
+            player?.loadVideo(urlVi)
+            player?.play()
+        }else{
+            Toast.makeText(this, "No se pueded cargar el video", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onInitializationFailure(

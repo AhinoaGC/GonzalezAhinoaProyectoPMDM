@@ -14,6 +14,6 @@ data class Pelicula(
     @SerializedName("runtimeMinutes")var duracion: String,
     var ano: String,
     @SerializedName("description")var resumen: String,
-    @SerializedName("trailerUrl")var urlVideo: String
+    @SerializedName("trailerUrl")var urlVideo: String?
 
 ): Serializable
