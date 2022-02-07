@@ -50,11 +50,16 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
        val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
         youTubePlayerFragment.initialize(api_key, this)
 
+
         binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
         binding.tvDirectorPelicula.text = "Director: "+pelicula.director
         binding.tvAno.text = "Año: " + pelicula.ano
         binding.tvResumen.text = pelicula.resumen
-        binding.estrellas.rating = pelicula.puntuacion.toFloat()
+        if(pelicula.puntuacion==null){
+            binding.estrellas.rating = 0F
+        }else{
+            binding.estrellas.rating = pelicula.puntuacion!!.toFloat()
+        }
         Picasso.get().load(pelicula.url).into(binding.imP)
     }
 

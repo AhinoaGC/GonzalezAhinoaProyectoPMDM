@@ -39,7 +39,7 @@ class EditarPeliculaActivity : AppCompatActivity() {
         binding.etDuracion.setText("Duración: " + pelicula.duracion)
         binding.etResumen.setText("Sinopsis:\n" + pelicula.resumen)
         binding.etResumen.setMovementMethod(ScrollingMovementMethod())
-        binding.estrellas2.rating = pelicula.puntuacion.toFloat()
+        binding.estrellas2.rating = pelicula.puntuacion!!.toFloat()
         binding.eUrlVideo.setText(pelicula.urlVideo);
         Picasso.get().load(pelicula.url).into(binding.imP)
 

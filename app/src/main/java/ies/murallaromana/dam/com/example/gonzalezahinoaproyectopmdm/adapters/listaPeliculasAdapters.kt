@@ -47,7 +47,11 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
 
         holder.tvTitulo.setText(pelicula?.titulo)
         holder.tvGenero.setText("Género: " + pelicula?.genero)
-        holder.estrellas.rating = pelicula?.puntuacion!!.toFloat()
+        if(pelicula?.puntuacion==null){
+            holder.estrellas.rating = 0F
+        }else{
+            holder.estrellas.rating = pelicula?.puntuacion!!.toFloat()
+        }
         Picasso.get().load(pelicula?.url).into(holder.ivFoto)
 
         holder.cardView.setOnClickListener{
@@ -91,7 +95,7 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
                 {
                     val filterPattern: String = p0.toString().toLowerCase().trim()
                     for (item in listaCompleta) {
-                        if (item.titulo.lowercase().contains(filterPattern)) {
+                        if (item.titulo!!.lowercase().contains(filterPattern)) {
                             listaFiltroActual.add(item)
                         }
                     }
