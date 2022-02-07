@@ -44,34 +44,34 @@ class ListaActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle("PopFilms")
 
-        pre = DatosPreferences(this)
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://damapi.herokuapp.com/api/v1/")
-            .build()
-
-        val token=pre.recuperarToken()
-        val service: ApiService = retrofit.create(ApiService::class.java)
-        val call = service.getAll("Bearer" + token)
-
-        call.enqueue(object : Callback<List<Pelicula>> {
-            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
-                Log.d("respuesta: onFailure", t.toString())
-            }
-
-            override fun onResponse(call: Call<List<Pelicula>>, response: Response<List<Pelicula>>) {
-                if (response.code() > 299 || response.code() < 200) {
-                    Toast.makeText(applicationContext, "No se ha podido cargar la lista.", Toast.LENGTH_SHORT).show()
-                } else {
-
-                    val layoutManager = LinearLayoutManager(applicationContext)
-                    val listaPelicula: List<Pelicula>? = response.body()
-                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
-                    binding.rvListaPeliculas.layoutManager = layoutManager
-                    binding.rvListaPeliculas.adapter = adapters
-                }
-            }
-        })
+//        pre = DatosPreferences(this)
+//        val retrofit = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+//            .build()
+//
+//        val token=pre.recuperarToken()
+//        val service: ApiService = retrofit.create(ApiService::class.java)
+//        val call = service.getAll("Bearer" + token)
+//
+//        call.enqueue(object : Callback<List<Pelicula>> {
+//            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
+//                Log.d("respuesta: onFailure", t.toString())
+//            }
+//
+//            override fun onResponse(call: Call<List<Pelicula>>, response: Response<List<Pelicula>>) {
+//                if (response.code() > 299 || response.code() < 200) {
+//                    Toast.makeText(applicationContext, "No se ha podido cargar la lista.", Toast.LENGTH_SHORT).show()
+//                } else {
+//
+//                    val layoutManager = LinearLayoutManager(applicationContext)
+//                    val listaPelicula: List<Pelicula>? = response.body()
+//                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
+//                    binding.rvListaPeliculas.layoutManager = layoutManager
+//                    binding.rvListaPeliculas.adapter = adapters
+//                }
+//            }
+//        })
 
         binding.fbMas.setOnClickListener {
             if(binding.fbAdd.visibility==View.GONE){
@@ -133,6 +133,33 @@ class ListaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-//        adapters!!.notifyDataSetChanged()
+        pre = DatosPreferences(this)
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+            .build()
+
+        val token=pre.recuperarToken()
+        val service: ApiService = retrofit.create(ApiService::class.java)
+        val call = service.getAll("Bearer" + token)
+
+        call.enqueue(object : Callback<List<Pelicula>> {
+            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
+                Log.d("respuesta: onFailure", t.toString())
+            }
+
+            override fun onResponse(call: Call<List<Pelicula>>, response: Response<List<Pelicula>>) {
+                if (response.code() > 299 || response.code() < 200) {
+                    Toast.makeText(applicationContext, "No se ha podido cargar la lista.", Toast.LENGTH_SHORT).show()
+                } else {
+
+                    val layoutManager = LinearLayoutManager(applicationContext)
+                    val listaPelicula: List<Pelicula>? = response.body()
+                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
+                    binding.rvListaPeliculas.layoutManager = layoutManager
+                    binding.rvListaPeliculas.adapter = adapters
+                }
+            }
+        })
     }
 }

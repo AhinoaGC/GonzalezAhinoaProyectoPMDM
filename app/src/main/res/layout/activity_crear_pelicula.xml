@@ -15,6 +15,28 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/eUrlImg"
+                android:layout_width="@dimen/edit_width"
+                android:layout_height="@dimen/edit_height"
+                android:layout_marginStart="@dimen/padding_default"
+                android:ems="10"
+                android:hint="Imagen"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/imP"
+                app:layout_constraintTop_toBottomOf="@+id/eNumero" />
+
+            <EditText
+                android:id="@+id/eNumero"
+                android:layout_width="@dimen/edit_width"
+                android:layout_height="@dimen/edit_height"
+                android:layout_marginStart="@dimen/padding_default"
+                android:ems="10"
+                android:hint="Numero"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/imP"
+                app:layout_constraintTop_toBottomOf="@+id/eUrlVideo" />
+
+            <EditText
                 android:id="@+id/eUrlVideo"
                 android:layout_width="@dimen/edit_width"
                 android:layout_height="@dimen/edit_height"
@@ -114,14 +136,14 @@
                 android:id="@+id/etResumen"
                 android:layout_width="326dp"
                 android:layout_height="174dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/sinopsis"
                 android:inputType="textMultiLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etDuracion" />
+                app:layout_constraintTop_toBottomOf="@+id/eUrlImg" />
 
             <Button
                 android:id="@+id/brGuardarPelicula"

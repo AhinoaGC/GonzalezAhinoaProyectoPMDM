@@ -45,7 +45,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
             val genero = binding.edGenero.text.toString()
             val director = binding.edDirector.text.toString()
             val puntuacion = binding.estrellas2.rating.toString()
-            val imagen = "https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800"
+            val imagen = binding.eUrlImg.text.toString()
             val duracion = binding.etDuracion.text.toString()
             val ano = binding.etAno.text.toString()
             val resumen = binding.etResumen.text.toString()
