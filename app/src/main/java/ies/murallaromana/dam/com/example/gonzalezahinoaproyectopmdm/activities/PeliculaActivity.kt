@@ -18,6 +18,7 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.
 import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.Utils.ValidacionesUtils
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
 import retrofit2.Call
@@ -140,6 +141,14 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
             override fun onResponse(call: Call<Pelicula>, response: Response<Pelicula>) {
                 if (response.code() > 299 || response.code() < 200) {
                     Toast.makeText(applicationContext,"La pelicula no se ha podido borrar.",Toast.LENGTH_SHORT).show()
+                    if (response.code() > 401 || response.code() < 500) {
+                        Toast.makeText(
+                            applicationContext,
+                            "Inicio de sesión caducado",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        ValidacionesUtils().reiniciarApp(pre, applicationContext)
+                    }
                 }else{
                     Toast.makeText(applicationContext,"La pelicula ha sido eliminada correctamente.",Toast.LENGTH_SHORT).show()
                     finish()

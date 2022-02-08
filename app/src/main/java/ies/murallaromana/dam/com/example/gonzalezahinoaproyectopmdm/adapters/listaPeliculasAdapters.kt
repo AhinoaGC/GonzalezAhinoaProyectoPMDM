@@ -53,24 +53,6 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: C
             intent.putExtra("pelicula", pelicula)
             context.startActivity(intent)
         }
-
-//        holder.cardView.setOnLongClickListener(OnLongClickListener {
-//        val builder = AlertDialog.Builder(context)
-//            builder.setTitle("¿Que quieres hacer con la pelicula?")
-//            builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
-//            builder.setPositiveButton("Editar") { dialog, which ->
-//                val intent = Intent(context, EditarPeliculaActivity::class.java)
-//                intent.putExtra("pelicula", pelicula)
-//                context.startActivity(intent)
-//            }
-//            builder.setNeutralButton("Ver") { dialog, which ->
-//                val intent = Intent(context, PeliculaActivity::class.java)
-//                intent.putExtra("pelicula", pelicula)
-//                context.startActivity(intent)
-//            }
-//            builder.show()
-//            false
-//        })
     }
 
     override fun getItemCount(): Int {

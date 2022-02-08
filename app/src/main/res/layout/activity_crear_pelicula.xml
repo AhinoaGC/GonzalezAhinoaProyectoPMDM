@@ -17,7 +17,7 @@
             <EditText
                 android:id="@+id/eUrlImg"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="Imagen"
@@ -28,7 +28,7 @@
             <EditText
                 android:id="@+id/eNumero"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="Numero"
@@ -39,7 +39,7 @@
             <EditText
                 android:id="@+id/eUrlVideo"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:layout_marginTop="36dp"
                 android:ems="10"
@@ -79,7 +79,7 @@
             <EditText
                 android:id="@+id/etTitulo"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:cursorVisible="true"
                 android:ems="10"
@@ -91,7 +91,7 @@
             <EditText
                 android:id="@+id/edGenero"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="@string/genero"
@@ -102,7 +102,7 @@
             <EditText
                 android:id="@+id/edDirector"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="@string/director"
@@ -113,7 +113,7 @@
             <EditText
                 android:id="@+id/etAno"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="@string/ano"
@@ -124,7 +124,7 @@
             <EditText
                 android:id="@+id/etDuracion"
                 android:layout_width="@dimen/edit_width"
-                android:layout_height="@dimen/edit_height"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/padding_default"
                 android:ems="10"
                 android:hint="@string/duracion"
@@ -148,7 +148,7 @@
             <Button
                 android:id="@+id/brGuardarPelicula"
                 android:layout_width="197dp"
-                android:layout_height="37dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/guardar"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -165,15 +165,26 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btImagen"
-                android:layout_width="48dp"
-                android:layout_height="39dp"
+                android:layout_width="42dp"
+                android:layout_height="44dp"
                 android:layout_marginTop="152dp"
                 android:clickable="true"
-
                 app:fabSize="mini"
                 app:layout_constraintEnd_toEndOf="@+id/imP"
                 app:layout_constraintTop_toTopOf="@+id/imP"
-                app:srcCompat="@android:drawable/ic_menu_crop" />
+                app:srcCompat="@android:drawable/ic_menu_upload"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="100dp"
+                android:layout_height="83dp"
+                android:layout_marginStart="124dp"
+                android:layout_marginTop="28dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btImagen" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
