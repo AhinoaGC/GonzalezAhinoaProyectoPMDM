@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
@@ -31,6 +32,7 @@ class LoginFragment : Fragment() {
     private lateinit var tvPantallaRegistro: TextView
     private lateinit var btAceptar: Button
     private lateinit var vi : View
+    private lateinit var progreso: ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         vi = inflater.inflate(R.layout.fragment_login, container, false)
@@ -41,60 +43,84 @@ class LoginFragment : Fragment() {
         tieCont= vi.findViewById(R.id.tieCont)
         tvPantallaRegistro= vi.findViewById(R.id.tvPantallaRegistro)
         btAceptar= vi.findViewById(R.id.btAceptar)
+        progreso = vi.findViewById(R.id.progreso)
 
-        tvPantallaRegistro.setOnClickListener{
-            Log.d("LoginFragment", "loginfragment")
-            val ft= activity?.supportFragmentManager?.beginTransaction()
-            ft?.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left)
-            ft?.replace(R.id.contenedorFragment,RegistroFragment())
-            ft?.addToBackStack(null)
-            ft?.commit()
+        btAceptar.isEnabled=true
+
+        if(!pre.recuperarToken().isNullOrEmpty()){
+            val lista = Intent(vi.context, ListaActivity::class.java)
+            startActivity(lista)
         }
+            tvPantallaRegistro.setOnClickListener {
+                Log.d("LoginFragment", "loginfragment")
+                val ft = activity?.supportFragmentManager?.beginTransaction()
+                ft?.setCustomAnimations(
+                    R.anim.enter_from_left,
+                    R.anim.exit_to_right,
+                    R.anim.enter_from_right,
+                    R.anim.exit_to_left
+                )
+                ft?.replace(R.id.contenedorFragment, RegistroFragment())
+                ft?.addToBackStack(null)
+                ft?.commit()
+            }
 
-        btAceptar.setOnClickListener{
+            btAceptar.setOnClickListener {
+                btAceptar.isEnabled=false
+                progreso.visibility = View.VISIBLE
+                val email = tieUser.text.toString().trim()
+                val contraseña = tieCont.text.toString().trim()
 
-            val email = tieUser.text.toString().trim()
-            val contraseña = tieCont.text.toString().trim()
+                val u = User(null, email, contraseña)
 
-            val u = User(null,email, contraseña)
+                val retrofit = Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl("https://damapi.herokuapp.com/api/v1/")
+                    .build()
 
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://damapi.herokuapp.com/api/v1/")
-                .build()
+                val service: UserService = retrofit.create(UserService::class.java)
+                val loginCall = service.login(u)
 
-            val service: UserService = retrofit.create(UserService::class.java)
-            val loginCall = service.login(u)
+                loginCall.enqueue(object : Callback<Token> {
+                    override fun onFailure(call: Call<Token>, t: Throwable) {
+                        Log.e("respuesta: onFailure", t.toString())
+                        progreso.visibility = View.GONE
 
-            loginCall.enqueue(object: Callback<Token> {
-               override fun onFailure(call: Call<Token>, t: Throwable) {
-                    Log.e("respuesta: onFailure", t.toString())
+                    }
 
-                }
+                    override fun onResponse(call: Call<Token>, response: Response<Token>) {
+                        Log.e("respuesta: onResponse", response.toString())
 
-                override fun onResponse(call: Call<Token>, response: Response<Token>) {
-                    Log.e("respuesta: onResponse", response.toString())
+                        if (response.code() > 299 || response.code() < 200) {
+                            // Muestro alerta: no se ha podido crear el usuario
+                            Toast.makeText(
+                                vi.context,
+                                "No se ha podido iniciar sesión.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            progreso.visibility = View.GONE
+                        } else {
+                            val token = response.body()?.token
+                            Log.d("respuesta: token:", token.orEmpty())
 
-                    if (response.code() > 299 || response.code() < 200) {
-                        // Muestro alerta: no se ha podido crear el usuario
-                        Toast.makeText(vi.context, "No se ha podido iniciar sesión.", Toast.LENGTH_SHORT).show()
-                    } else {
-                       val token = response.body()?.token
-                        Log.d("respuesta: token:", token.orEmpty())
+                            //Muestro mensaje de usuario creado correctamente.
+                            Toast.makeText(
+                                vi.context,
+                                "Inicio de sesión correcto",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            //Guardo en sharedPreferences el token
+                            pre.guardarToken(token)
 
-                       //Muestro mensaje de usuario creado correctamente.
-                       Toast.makeText(vi.context, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show()
-                        //Guardo en sharedPreferences el token
-                       pre.guardarToken(token)
-                        //Inicio nueva activity
-                       val lista = Intent(vi.context, ListaActivity::class.java)
-                       startActivity(lista)
-                   }
+                            progreso.visibility = View.GONE
+                            val lista = Intent(vi.context, ListaActivity::class.java)
+                            startActivity(lista)
+                        }
 
-               }
-            })
+                    }
+                })
 
-        }
+            }
         return vi
     }
 }

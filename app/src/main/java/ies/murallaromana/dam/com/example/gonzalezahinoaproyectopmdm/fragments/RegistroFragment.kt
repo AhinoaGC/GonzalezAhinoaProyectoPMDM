@@ -1,30 +1,23 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.textfield.TextInputEditText
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.ListaActivity
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityRegistroBinding
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.UserService
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.entities.Token
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.entities.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.regex.Pattern
 
 class RegistroFragment : Fragment() {
     private  lateinit var pre: DatosPreferences

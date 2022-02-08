@@ -9,8 +9,8 @@ class DatosPreferences (val context: Context) {
 
     fun guardarToken(token: String?) {
         pref.edit().putString("Token", token).commit()
-
         }
+
 
     fun recuperarToken(): String? {
             return pref.getString("Token", "")
