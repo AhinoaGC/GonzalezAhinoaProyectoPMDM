@@ -13,10 +13,8 @@ import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import androidx.appcompat.app.AppCompatActivity
-
 import com.google.android.youtube.player.YouTubePlayerFragment
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityDetallePeliculaBinding
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate

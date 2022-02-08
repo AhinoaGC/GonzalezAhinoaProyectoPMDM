@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
@@ -16,22 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.Utils.ValidacionesUtils
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ClienteRetrofit
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.UserService
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
-import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
-import kotlin.collections.ArrayList
-
 class ListaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaBinding
@@ -140,7 +132,7 @@ class ListaActivity : AppCompatActivity() {
                     }
                 } else {
                     val layoutManager = LinearLayoutManager(applicationContext)
-                    val listaPelicula: List<Pelicula>? = response.body()
+                    val listaPelicula: ArrayList<Pelicula>? = response.body()?.toCollection(ArrayList())
                     adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
                     binding.rvListaPeliculas.layoutManager = layoutManager
                     binding.rvListaPeliculas.adapter = adapters

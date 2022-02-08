@@ -85,6 +85,7 @@ class LoginFragment : Fragment() {
                     override fun onFailure(call: Call<Token>, t: Throwable) {
                         Log.e("respuesta: onFailure", t.toString())
                         progreso.visibility = View.GONE
+                        btAceptar.isEnabled=true
 
                     }
 
@@ -99,6 +100,7 @@ class LoginFragment : Fragment() {
                                 Toast.LENGTH_SHORT
                             ).show()
                             progreso.visibility = View.GONE
+                            btAceptar.isEnabled=true
                         } else {
                             val token = response.body()?.token
                             Log.d("respuesta: token:", token.orEmpty())

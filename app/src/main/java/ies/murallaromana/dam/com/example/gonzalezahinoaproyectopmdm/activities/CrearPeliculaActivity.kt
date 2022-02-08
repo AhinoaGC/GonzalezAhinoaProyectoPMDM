@@ -1,22 +1,13 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import com.squareup.picasso.Picasso
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityCrearPeliculaBinding
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App.Companion.peliculas
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
-import ies.murallaromana.dam.com.example.pruebalistas.model.data.PeliculasDaoMockImpl
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import retrofit2.Call
 import retrofit2.Callback

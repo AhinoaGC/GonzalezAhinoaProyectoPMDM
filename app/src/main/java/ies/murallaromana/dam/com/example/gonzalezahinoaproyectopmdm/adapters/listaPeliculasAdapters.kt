@@ -1,6 +1,5 @@
 package ies.murallaromana.dam.com.example.pruebalistas.adapters
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -13,16 +12,10 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.PeliculaActivity
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 
-import android.os.Build
-import android.view.View.OnLongClickListener
 import android.widget.*
 
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.EditarPeliculaActivity
-import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.App
-import java.util.stream.Collectors
 
-
-class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Context) :
+class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: Context) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
     var listaCompleta : ArrayList<Pelicula> = ArrayList(peliculas)
@@ -61,23 +54,23 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
             context.startActivity(intent)
         }
 
-        holder.cardView.setOnLongClickListener(OnLongClickListener {
-        val builder = AlertDialog.Builder(context)
-            builder.setTitle("¿Que quieres hacer con la pelicula?")
-            builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
-            builder.setPositiveButton("Editar") { dialog, which ->
-                val intent = Intent(context, EditarPeliculaActivity::class.java)
-                intent.putExtra("pelicula", pelicula)
-                context.startActivity(intent)
-            }
-            builder.setNeutralButton("Ver") { dialog, which ->
-                val intent = Intent(context, PeliculaActivity::class.java)
-                intent.putExtra("pelicula", pelicula)
-                context.startActivity(intent)
-            }
-            builder.show()
-            false
-        })
+//        holder.cardView.setOnLongClickListener(OnLongClickListener {
+//        val builder = AlertDialog.Builder(context)
+//            builder.setTitle("¿Que quieres hacer con la pelicula?")
+//            builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
+//            builder.setPositiveButton("Editar") { dialog, which ->
+//                val intent = Intent(context, EditarPeliculaActivity::class.java)
+//                intent.putExtra("pelicula", pelicula)
+//                context.startActivity(intent)
+//            }
+//            builder.setNeutralButton("Ver") { dialog, which ->
+//                val intent = Intent(context, PeliculaActivity::class.java)
+//                intent.putExtra("pelicula", pelicula)
+//                context.startActivity(intent)
+//            }
+//            builder.show()
+//            false
+//        })
     }
 
     override fun getItemCount(): Int {
@@ -108,9 +101,9 @@ class listaPeliculasAdapters(val peliculas: List<Pelicula>?, val context: Contex
 
 
             override fun publishResults(texto: CharSequence?, filtro: Filter.FilterResults?) {
-//                peliculas.clear()
-//                peliculas.addAll(filtro?.values as Collection<Pelicula>)
-//                notifyDataSetChanged()
+              peliculas?.clear()
+              peliculas?.addAll(filtro?.values as Collection<Pelicula>)
+              notifyDataSetChanged()
             }
         }
     }
