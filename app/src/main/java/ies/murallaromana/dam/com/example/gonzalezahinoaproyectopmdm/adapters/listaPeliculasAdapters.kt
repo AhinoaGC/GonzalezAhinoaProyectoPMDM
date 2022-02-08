@@ -50,7 +50,7 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: C
         holder.cardView.setOnClickListener{
             val intent = Intent(context, PeliculaActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("pelicula", pelicula)
+            intent.putExtra("id", pelicula?.id)
             context.startActivity(intent)
         }
     }

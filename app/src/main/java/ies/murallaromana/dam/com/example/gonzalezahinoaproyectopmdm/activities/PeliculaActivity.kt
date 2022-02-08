@@ -18,6 +18,7 @@ import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.
 import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.gson.annotations.SerializedName
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.Utils.ValidacionesUtils
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
@@ -41,25 +42,6 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         binding = ActivityDetallePeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-        pelicula = intent.extras?.get("pelicula") as Pelicula
-        pre = DatosPreferences(this)
-        setTitle(pelicula.titulo)
-
-       val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
-        youTubePlayerFragment.initialize(api_key, this)
-
-
-        binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
-        binding.tvDirectorPelicula.text = "Director: "+pelicula.director
-        binding.tvAno.text = "Año: " + pelicula.ano
-        binding.tvResumen.text = pelicula.resumen
-        if(pelicula.puntuacion==null){
-            binding.estrellas.rating = 0F
-        }else{
-            binding.estrellas.rating = pelicula.puntuacion!!.toFloat()
-        }
-        Picasso.get().load(pelicula.url).into(binding.imP)
     }
 
 
@@ -92,6 +74,21 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
                     borrarPelicula()
                     Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
                     finish()
+                }
+                builder.show()
+                return false
+            }
+            R.id.action_edit -> {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("¿Quieres editar la pelicula?")
+                builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
+                builder.setPositiveButton("Cancelar") { dialog, which ->
+                    Toast.makeText(this, "La pelicula no se ha editado.", Toast.LENGTH_SHORT).show()
+                }
+                builder.setNegativeButton("Editar") { dialog, which ->
+                    val intent = Intent(this, CrearPeliculaActivity::class.java)
+                    intent.putExtra("id", pelicula?.id)
+                    startActivity(intent)
                 }
                 builder.show()
                 return false
@@ -156,5 +153,61 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
             }
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        pre = DatosPreferences(this)
+        val id = intent.extras?.get("id") as String?
+        val token = pre.recuperarToken()
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+            .build()
+
+        val service: ApiService = retrofit.create(ApiService::class.java)
+        val call = service.getId("Bearer" + token, id)
+
+        val context = this
+        call.enqueue(object : Callback<Pelicula> {
+            override fun onFailure(call: Call<Pelicula>, t: Throwable) {
+                Log.d("respuesta: onFailure", t.toString())
+            }
+
+            override fun onResponse(call: Call<Pelicula>, response: Response<Pelicula>) {
+                if (response.code() > 299 || response.code() < 200) {
+
+                } else {
+                    val titulo = response.body()?.titulo.toString()
+                    val imagen = response.body()?.url.toString()
+                    val descripcion = response.body()?.resumen.toString()
+                    val director = response.body()?.director.toString()
+                    val genero = response.body()?.genero.toString()
+                    val nota = response.body()?.puntuacion.toString()
+                    val numero = response.body()?.numero.toString()
+                    val tiempo = response.body()?.duracion.toString()
+                    val id = response.body()?.id
+                    val video = response.body()?.urlVideo
+                    val ano = response.body()?.ano
+
+                    pelicula = Pelicula(id,numero,titulo,genero,director,nota,imagen,tiempo,ano,descripcion,video)
+
+                    val youTubePlayerFragment = fragmentManager.findFragmentById(R.id.youtubeplayer_fragment) as YouTubePlayerFragment
+                    youTubePlayerFragment.initialize(api_key, context)
+
+                    setTitle(pelicula.titulo)
+                    binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
+                    binding.tvDirectorPelicula.text = "Director: "+pelicula.director
+                    binding.tvAno.text = "Año: " + pelicula.ano
+                    binding.tvResumen.text = pelicula.resumen
+                    if(pelicula.puntuacion==null){
+                        binding.estrellas.rating = 0F
+                    }else{
+                        binding.estrellas.rating = pelicula.puntuacion!!.toFloat()
+                    }
+                    Picasso.get().load(pelicula.url).into(binding.imP)
+                }
+            }
+        })
     }
 }

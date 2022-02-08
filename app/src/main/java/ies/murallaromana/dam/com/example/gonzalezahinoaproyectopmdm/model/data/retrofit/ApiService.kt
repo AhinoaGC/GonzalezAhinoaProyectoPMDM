@@ -24,4 +24,8 @@ interface ApiService {
     @GET("movies/{id}?")
     fun getId(@Header("Authorization:") token: String,
               @Path("id") id:String?):Call<Pelicula>
+
+    @PUT("movies")
+    fun editar(@Header("Authorization:") token: String,
+               @Body pelicula: Pelicula): Call<Pelicula>
 }

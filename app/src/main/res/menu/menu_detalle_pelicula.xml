@@ -13,4 +13,10 @@
         android:orderInCategory="300"
         android:title="Llamar"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:orderInCategory="300"
+        android:title="Llamar"
+        app:showAsAction="ifRoom" />
 </menu>
