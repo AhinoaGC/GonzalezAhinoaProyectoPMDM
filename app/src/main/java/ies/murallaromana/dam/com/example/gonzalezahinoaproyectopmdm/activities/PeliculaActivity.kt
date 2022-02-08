@@ -110,7 +110,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
             player?.loadVideo(urlVi)
             player?.play()
         }else{
-            Toast.makeText(this, "No se pueded cargar el video", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No se puede cargar el video", Toast.LENGTH_SHORT).show()
         }
 
     }
