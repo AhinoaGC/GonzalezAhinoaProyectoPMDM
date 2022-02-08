@@ -31,10 +31,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.EditarPeliculaActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.CrearPeliculaActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
@@ -46,13 +42,6 @@
             android:name=".activities.ListaActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activities.RegistroActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

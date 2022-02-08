@@ -63,8 +63,6 @@ class CrearPeliculaActivity : AppCompatActivity() {
                     resumen,
                     video
                 )
-
-
                 val token = pre.recuperarToken()
                 val retrofit = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
@@ -185,6 +183,10 @@ class CrearPeliculaActivity : AppCompatActivity() {
                         binding.eUrlImg.setText(pelicula.url)
                         binding.eNumero.setText(pelicula.numero)
                         Picasso.get().load(pelicula.url).into(binding.imP)
+
+                        binding.btImagen.setOnClickListener {
+                            Picasso.get().load(binding.eUrlImg.text.toString()).into(binding.imP)
+                        }
 
                         binding.brGuardarPelicula.setOnClickListener {
                             binding.progressBar.visibility = View.VISIBLE
