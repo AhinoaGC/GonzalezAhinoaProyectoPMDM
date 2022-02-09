@@ -109,7 +109,15 @@ class CrearPeliculaActivity : AppCompatActivity() {
                 })
             }
             binding.btImagen.setOnClickListener {
-                Picasso.get().load(binding.eUrlImg.text.toString()).into(binding.imP)
+                if(binding.eUrlImg.text.toString().isNullOrEmpty()){
+                    Toast.makeText(
+                        applicationContext,
+                        R.string.errorImagen,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }else{
+                    Picasso.get().load(binding.eUrlImg.text.toString()).into(binding.imP)
+                }
             }
         } else {
             val token = pre.recuperarToken()

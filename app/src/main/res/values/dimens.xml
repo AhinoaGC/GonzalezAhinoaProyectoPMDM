@@ -6,6 +6,4 @@
     <dimen name="edit_width">194dp</dimen>
     <dimen name="edit_height">40dp</dimen>
     <dimen name="edit_detalle_width">237dp</dimen>
-
-
 </resources>
