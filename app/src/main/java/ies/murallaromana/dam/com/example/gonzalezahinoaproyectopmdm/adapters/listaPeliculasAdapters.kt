@@ -39,7 +39,7 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: C
         val pelicula = peliculas?.get(position)
 
         holder.tvTitulo.setText(pelicula?.titulo)
-        holder.tvGenero.setText("Género: " + pelicula?.genero)
+        holder.tvGenero.setText(pelicula?.genero)
         if(pelicula?.puntuacion==null){
             holder.estrellas.rating = 0F
         }else{

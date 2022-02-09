@@ -58,21 +58,20 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
                     val dial = "tel:$phoneNo"
                     startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(dial)))
                 } else {
-                    Toast.makeText(this@PeliculaActivity, "Error", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@PeliculaActivity, R.string.errorLlamada, Toast.LENGTH_SHORT)
                         .show()
                 }
                 return false
             }
             R.id.action_delete -> {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("¿Quieres borrar la pelicula?")
+                builder.setTitle(R.string.borrarPelicula)
                 builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
-                builder.setPositiveButton("Cancelar") { dialog, which ->
-                    Toast.makeText(this, "La pelicula no se ha borrado.", Toast.LENGTH_SHORT).show()
+                builder.setPositiveButton(R.string.cancelar) { dialog, which ->
+                    Toast.makeText(this, R.string.cancelarAccion, Toast.LENGTH_SHORT).show()
                 }
-                builder.setNegativeButton("Borrar") { dialog, which ->
+                builder.setNegativeButton(R.string.borrar) { dialog, which ->
                     borrarPelicula()
-                    Toast.makeText(this, "Pelicula eliminada", Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 builder.show()
@@ -80,12 +79,12 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
             }
             R.id.action_edit -> {
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("¿Quieres editar la pelicula?")
+                builder.setTitle(R.string.editarPelicula)
                 builder.setIcon(R.drawable.ic_baseline_movie_filter_24)
-                builder.setPositiveButton("Cancelar") { dialog, which ->
-                    Toast.makeText(this, "La pelicula no se ha editado.", Toast.LENGTH_SHORT).show()
+                builder.setPositiveButton(R.string.cancelar) { dialog, which ->
+                    Toast.makeText(this, R.string.cancelarAccion, Toast.LENGTH_SHORT).show()
                 }
-                builder.setNegativeButton("Editar") { dialog, which ->
+                builder.setNegativeButton(R.string.editar) { dialog, which ->
                     val intent = Intent(this, CrearPeliculaActivity::class.java)
                     intent.putExtra("id", pelicula?.id)
                     startActivity(intent)
@@ -107,7 +106,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
             player?.loadVideo(urlVi)
             player?.play()
         }else{
-            Toast.makeText(this, "No se puede cargar el video", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.errorVideo, Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -116,7 +115,7 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
         p0: YouTubePlayer.Provider?,
         p1: YouTubeInitializationResult?
     ) {
-        Toast.makeText(this@PeliculaActivity, "Error al cargar video.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@PeliculaActivity, R.string.errorVideo, Toast.LENGTH_SHORT).show()
     }
 
     fun borrarPelicula(){
@@ -137,17 +136,17 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
 
             override fun onResponse(call: Call<Pelicula>, response: Response<Pelicula>) {
                 if (response.code() > 299 || response.code() < 200) {
-                    Toast.makeText(applicationContext,"La pelicula no se ha podido borrar.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,R.string.errorBorrado,Toast.LENGTH_SHORT).show()
                     if (response.code() > 401 || response.code() < 500) {
                         Toast.makeText(
                             applicationContext,
-                            "Inicio de sesión caducado",
+                            R.string.inicioSesionCaducado,
                             Toast.LENGTH_SHORT
                         ).show()
                         ValidacionesUtils().reiniciarApp(pre, applicationContext)
                     }
                 }else{
-                    Toast.makeText(applicationContext,"La pelicula ha sido eliminada correctamente.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, R.string.borrarPeliculaConf, Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
@@ -196,14 +195,21 @@ class PeliculaActivity :  AppCompatActivity(), YouTubePlayer.OnInitializedListen
                     youTubePlayerFragment.initialize(api_key, context)
 
                     setTitle(pelicula.titulo)
-                    binding.tvGeneroPelicula.text = "Género: "+pelicula.genero
-                    binding.tvDirectorPelicula.text = "Director: "+pelicula.director
-                    binding.tvAno.text = "Año: " + pelicula.ano
+                    binding.tvGeneroPelicula.text = pelicula.genero
+                    binding.tvDirectorPelicula.text = pelicula.director
+                    binding.tvAno.text = pelicula.ano
                     binding.tvResumen.text = pelicula.resumen
                     if(pelicula.puntuacion==null){
                         binding.estrellas.rating = 0F
                     }else{
-                        binding.estrellas.rating = pelicula.puntuacion!!.toFloat()
+                        try {
+                            binding.estrellas.rating = pelicula.puntuacion!!.toFloat()
+                        }
+                        catch (e: NumberFormatException) {
+                            binding.estrellas.rating = 0F
+                            Toast.makeText(applicationContext, R.string.errorFormato, Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                     Picasso.get().load(pelicula.url).into(binding.imP)
                 }

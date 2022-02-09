@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">PopFilms</string>
     <string name="titulo">Titulo</string>
-    <string name="genero">Género</string>
+    <string name="genero">Género </string>
     <string name="director">Director</string>
     <string name="ano">Año</string>
     <string name="duracion">Duración</string>
     <string name="video">Video</string>
     <string name="sinopsis">Sinopsis</string>
     <string name="sinopsis2">Sinopsis: </string>
+    <string name="nombreApp">PopFilms</string>
 
     <string name="email">Email</string>
     <string name="user">Usuario</string>
@@ -19,6 +20,29 @@
     <string name="guardar">Guardar</string>
     <string name="name">Nombre</string>
     <string name="apell">Apellidos</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="errorCreacion">Error al crear la pelicula.</string>
+    <string name="inicioSesionCaducado">Su sesión a expirado.</string>
+    <string name="peliculaCreada">Pelicula creada correctamente.</string>
+    <string name="errorRecuperación">Error al recuperar la pelicula.</string>
+    <string name="errorEditar">Error al editar.</string>
+    <string name="editarCorrectamente">Pelicula editada correctamente.</string>
+    <string name="errorLlamada">Error en la llamada.</string>
+    <string name="borrarPelicula">¿Quieres borrar la pelicula?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="borrar">Borrar</string>
+    <string name="salir">Salir</string>
+    <string name="cancelarAccion">Opción cancelada</string>
+    <string name="borrarPeliculaConf">Pelicula borrada</string>
+    <string name="editarPelicula">¿Quieres editar la pelicula?</string>
+    <string name="editar">Editar</string>
+    <string name="errorVideo">No se puede cargar el video.</string>
+    <string name="errorBorrado">No se ha podido borrar la pelicula.</string>
+    <string name="cerrarSesion">¿Quieres cerrar sesión?</string>
+    <string name="sesionCerrada">Sesión cerrada</string>
+    <string name="errorSesion">Error al iniciar sesión.</string>
+    <string name="errorFormato">Error fomato, algunos datos aparecerán vacíos</string>
+    <string name="errorLista">Error al cargar la lista</string>
+    <string name="errorRegistro">No se ha podido crear la cuenta.</string>
+    <string name="registroCorrecto">Cuenta creada correctamente</string>
 </resources>

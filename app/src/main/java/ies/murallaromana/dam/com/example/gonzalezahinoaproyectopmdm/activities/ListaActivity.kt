@@ -35,7 +35,7 @@ class ListaActivity : AppCompatActivity() {
         binding = ActivityListaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        setTitle("PopFilms")
+        setTitle(R.string.nombreApp)
 
         binding.fbMas.setOnClickListener {
             if (binding.fbAdd.visibility == View.GONE) {
@@ -46,7 +46,6 @@ class ListaActivity : AppCompatActivity() {
                 binding.fbSalir.hide()
                 binding.fbAdd.hide()
                 binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_add_24))
-
             }
         }
 
@@ -57,13 +56,13 @@ class ListaActivity : AppCompatActivity() {
 
         binding.fbSalir.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("¿Quieres cerrar sesión?")
+            builder.setTitle(R.string.cerrarSesion)
             builder.setIcon(R.drawable.ic_baseline_login_24)
-            builder.setPositiveButton("Cancelar") { dialog, which ->
-                Toast.makeText(this, "No se ha cerrado la sesión.", Toast.LENGTH_SHORT).show()
+            builder.setPositiveButton(R.string.cancelar) { dialog, which ->
+                Toast.makeText(this, R.string.cancelarAccion, Toast.LENGTH_SHORT).show()
             }
-            builder.setNegativeButton("Salir") { dialog, which ->
-                Toast.makeText(this, "Sesión cerrrada.", Toast.LENGTH_SHORT).show()
+            builder.setNegativeButton(R.string.salir) { dialog, which ->
+                Toast.makeText(this, R.string.sesionCerrada, Toast.LENGTH_SHORT).show()
                 val validar = ValidacionesUtils()
                 validar.reiniciarApp(pre, this)
             }
@@ -119,13 +118,13 @@ class ListaActivity : AppCompatActivity() {
                 if (response.code() > 299 || response.code() < 200) {
                     Toast.makeText(
                         applicationContext,
-                        "No se ha podido cargar la lista.",
+                        R.string.errorLista,
                         Toast.LENGTH_SHORT
                     ).show()
                     if (response.code() > 401 || response.code() < 500) {
                         Toast.makeText(
                             applicationContext,
-                            "Inicio de sesión caducado",
+                            R.string.inicioSesionCaducado,
                             Toast.LENGTH_SHORT
                         ).show()
                         ValidacionesUtils().reiniciarApp(pre, applicationContext)

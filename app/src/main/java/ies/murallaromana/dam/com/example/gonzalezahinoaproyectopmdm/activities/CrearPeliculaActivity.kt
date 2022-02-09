@@ -82,7 +82,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
                         if (response.code() > 299 || response.code() < 200) {
                             Toast.makeText(
                                 applicationContext,
-                                "Error en la creación",
+                                R.string.errorCreacion,
                                 Toast.LENGTH_SHORT
                             ).show()
                             binding.progressBar.visibility = View.GONE
@@ -90,7 +90,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
                             if (response.code() > 401 || response.code() < 500) {
                                 Toast.makeText(
                                     applicationContext,
-                                    "Inicio de sesión caducado",
+                                    R.string.inicioSesionCaducado,
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 ValidacionesUtils().reiniciarApp(pre, applicationContext)
@@ -98,7 +98,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 applicationContext,
-                                "Pelicula creada",
+                                R.string.peliculaCreada,
                                 Toast.LENGTH_SHORT
                             ).show()
                             binding.progressBar.visibility = View.GONE
@@ -130,13 +130,13 @@ class CrearPeliculaActivity : AppCompatActivity() {
                     if (response.code() > 299 || response.code() < 200) {
                         Toast.makeText(
                             context,
-                            "Error al recuperar la pelicula.",
+                            R.string.errorRecuperación,
                             Toast.LENGTH_SHORT
                         ).show()
                         if (response.code() > 401 || response.code() < 500) {
                             Toast.makeText(
                                 applicationContext,
-                                "Inicio de sesión caducado",
+                                R.string.inicioSesionCaducado,
                                 Toast.LENGTH_SHORT
                             ).show()
                             ValidacionesUtils().reiniciarApp(pre, applicationContext)
@@ -235,14 +235,14 @@ class CrearPeliculaActivity : AppCompatActivity() {
                                     response: Response<Pelicula>
                                 ) {
                                     if (response.code() > 299 || response.code() < 200) {
-                                        Toast.makeText(context, "Error al editar", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, R.string.errorEditar, Toast.LENGTH_SHORT).show()
                                         binding.progressBar.visibility = View.GONE
                                         binding.brGuardarPelicula.isEnabled = true
                                         if (response.code() == 401 || response.code() == 500) {
                                             ValidacionesUtils().reiniciarApp(pre, applicationContext)
                                         }
                                     } else {
-                                        Toast.makeText(context, "Editada correctamente.", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, R.string.editarCorrectamente, Toast.LENGTH_SHORT).show()
                                         binding.progressBar.visibility = View.GONE
                                         finish()
                                     }

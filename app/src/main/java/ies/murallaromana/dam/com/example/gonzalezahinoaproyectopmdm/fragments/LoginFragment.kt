@@ -75,51 +75,48 @@ class LoginFragment : Fragment() {
             val contraseña = tieCont.text.toString().trim()
 
             val u = User(null, email, contraseña)
-
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://damapi.herokuapp.com/api/v1/")
-                .build()
-
-            val service: UserService = retrofit.create(UserService::class.java)
-            val loginCall = service.login(u)
-
-            loginCall.enqueue(object : Callback<Token> {
-                override fun onFailure(call: Call<Token>, t: Throwable) {
-                    Log.e("respuesta: onFailure", t.toString())
-                    progreso.visibility = View.GONE
-                    btAceptar.isEnabled = true
-                }
-
-                override fun onResponse(call: Call<Token>, response: Response<Token>) {
-                    Log.e("respuesta: onResponse", response.toString())
-
-                    if (response.code() > 299 || response.code() < 200) {
-                        Toast.makeText(
-                            vi.context,
-                            "No se ha podido iniciar sesión.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        progreso.visibility = View.GONE
-                        btAceptar.isEnabled = true
-                    } else {
-                        val token = response.body()?.token
-                        Log.d("respuesta: token:", token.orEmpty())
-                        Toast.makeText(
-                            vi.context,
-                            "Inicio de sesión correcto",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        pre.guardarToken(token)
-                        progreso.visibility = View.GONE
-                        val lista = Intent(vi.context, ListaActivity::class.java)
-                        startActivity(lista)
-                    }
-
-                }
-            })
-
+            iniciarSesion(u)
         }
         return vi
+    }
+
+    fun iniciarSesion(u: User) {
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://damapi.herokuapp.com/api/v1/")
+            .build()
+
+        val service: UserService = retrofit.create(UserService::class.java)
+        val loginCall = service.login(u)
+
+        loginCall.enqueue(object : Callback<Token> {
+            override fun onFailure(call: Call<Token>, t: Throwable) {
+                Log.e("respuesta: onFailure", t.toString())
+                progreso.visibility = View.GONE
+                btAceptar.isEnabled = true
+            }
+
+            override fun onResponse(call: Call<Token>, response: Response<Token>) {
+                Log.e("respuesta: onResponse", response.toString())
+
+                if (response.code() > 299 || response.code() < 200) {
+                    Toast.makeText(
+                        vi.context,
+                        R.string.errorSesion,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    progreso.visibility = View.GONE
+                    btAceptar.isEnabled = true
+                } else {
+                    val token = response.body()?.token
+                    Log.d("respuesta: token:", token.orEmpty())
+                    pre.guardarToken(token)
+                    progreso.visibility = View.GONE
+                    val lista = Intent(vi.context, ListaActivity::class.java)
+                    startActivity(lista)
+                }
+            }
+        })
     }
 }
