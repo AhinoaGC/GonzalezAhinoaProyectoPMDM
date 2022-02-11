@@ -1,7 +1,12 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities
 
+import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,25 +15,36 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.annotation.RequiresPermission
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Database
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.Utils.ValidacionesUtils
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.databinding.ActivityListaBinding
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.Dao.DataBasePeliculas
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.ApiService
 import ies.murallaromana.dam.com.example.pruebalistas.adapters.listaPeliculasAdapters
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
+
 class ListaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaBinding
     private lateinit var adapters: listaPeliculasAdapters
     private lateinit var pre: DatosPreferences
+    private var listaPelicula: ArrayList<Pelicula>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +112,25 @@ class ListaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        //hay conexion a internet
+        if(!isNetworkAvailable(this)){
+            Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT).show()
+            val db = DataBasePeliculas.getDatabase(this)
+            val  peliculasDao = db?.peliculasDao()
+            GlobalScope.launch(Dispatchers.IO) {
+                listaPelicula= peliculasDao?.findAll()?.toCollection(ArrayList())
+                runOnUiThread {
+                    Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            val layoutManager = LinearLayoutManager(applicationContext)
+
+           adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
+           binding.rvListaPeliculas.layoutManager = layoutManager
+           binding.rvListaPeliculas.adapter = adapters
+        }else{
         pre = DatosPreferences(this)
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -109,6 +144,7 @@ class ListaActivity : AppCompatActivity() {
         call.enqueue(object : Callback<List<Pelicula>> {
             override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
                 Log.d("respuesta: onFailure", t.toString())
+
             }
 
             override fun onResponse(
@@ -130,6 +166,13 @@ class ListaActivity : AppCompatActivity() {
                         ValidacionesUtils().reiniciarApp(pre, applicationContext)
                     }
                 } else {
+                    val db = DataBasePeliculas.getDatabase(applicationContext)
+                    val  peliculasDao = db?.peliculasDao()
+                    GlobalScope.launch(Dispatchers.IO) {
+
+                        response.body()?.forEach { it -> it.idRoom = it.id!! }
+                        peliculasDao?.insert(response.body())
+                    }
                     val layoutManager = LinearLayoutManager(applicationContext)
                     val listaPelicula: ArrayList<Pelicula>? = response.body()?.toCollection(ArrayList())
                     adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
@@ -137,6 +180,26 @@ class ListaActivity : AppCompatActivity() {
                     binding.rvListaPeliculas.adapter = adapters
                 }
             }
-        })
+        })}
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val nw      = connectivityManager.activeNetwork ?: return false
+            val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
+            return when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                //for other device how are able to connect with Ethernet
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                //for check internet over Bluetooth
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                else -> false
+            }
+        } else {
+            val nwInfo = connectivityManager.activeNetworkInfo ?: return false
+            return nwInfo.isConnected
+        }
     }
 }

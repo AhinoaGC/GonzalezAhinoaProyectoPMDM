@@ -14,10 +14,14 @@ import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.R
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.activities.ListaActivity
+import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.Dao.DataBasePeliculas
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.DatosPreferences
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.data.retrofit.UserService
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.entities.Token
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.entities.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -113,6 +117,7 @@ class LoginFragment : Fragment() {
                     Log.d("respuesta: token:", token.orEmpty())
                     pre.guardarToken(token)
                     progreso.visibility = View.GONE
+
                     val lista = Intent(vi.context, ListaActivity::class.java)
                     startActivity(lista)
                 }
