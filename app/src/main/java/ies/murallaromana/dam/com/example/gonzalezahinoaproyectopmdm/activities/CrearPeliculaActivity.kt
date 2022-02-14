@@ -87,7 +87,7 @@ class CrearPeliculaActivity : AppCompatActivity() {
                             ).show()
                             binding.progressBar.visibility = View.GONE
                             binding.brGuardarPelicula.isEnabled = true
-                            if (response.code() > 401 || response.code() < 500) {
+                            if (response.code() == 401) {
                                 Toast.makeText(
                                     applicationContext,
                                     R.string.inicioSesionCaducado,

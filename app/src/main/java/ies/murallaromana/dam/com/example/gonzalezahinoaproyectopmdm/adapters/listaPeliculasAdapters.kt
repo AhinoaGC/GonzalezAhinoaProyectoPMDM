@@ -15,7 +15,7 @@ import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import android.widget.*
 
 
-class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: Context) :
+class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: Context, val hayConexion : Boolean) :
     RecyclerView.Adapter<listaPeliculasAdapters.PersonajesViewHolder>(), Filterable {
 
     var listaCompleta : ArrayList<Pelicula> = ArrayList(peliculas)
@@ -46,12 +46,13 @@ class listaPeliculasAdapters(val peliculas: ArrayList<Pelicula>?, val context: C
             holder.estrellas.rating = pelicula?.puntuacion!!.toFloat()
         }
         Picasso.get().load(pelicula?.url).into(holder.ivFoto)
-
-        holder.cardView.setOnClickListener{
-            val intent = Intent(context, PeliculaActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("id", pelicula?.id)
-            context.startActivity(intent)
+        if(hayConexion){
+            holder.cardView.setOnClickListener{
+                val intent = Intent(context, PeliculaActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("id", pelicula?.id)
+                context.startActivity(intent)
+            }
         }
     }
 

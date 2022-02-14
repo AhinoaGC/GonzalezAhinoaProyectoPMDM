@@ -26,7 +26,7 @@ data class Pelicula(
 
     @PrimaryKey
     @ColumnInfo(name = "idRoom")
-    var idRoom: String = ""
+    @Transient var idRoom: String = ""
 
     fun obtenerId(): String? {
       if (id == null) return idRoom else return id

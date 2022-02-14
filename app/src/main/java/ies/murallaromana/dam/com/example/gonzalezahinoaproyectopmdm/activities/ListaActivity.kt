@@ -6,11 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
@@ -52,38 +55,7 @@ class ListaActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setTitle(R.string.nombreApp)
-
-        binding.fbMas.setOnClickListener {
-            if (binding.fbAdd.visibility == View.GONE) {
-                binding.fbSalir.show()
-                binding.fbAdd.show()
-                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_remove_24))
-            } else {
-                binding.fbSalir.hide()
-                binding.fbAdd.hide()
-                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_add_24))
-            }
-        }
-
-        binding.fbAdd.setOnClickListener {
-            val intent = Intent(this, CrearPeliculaActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.fbSalir.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle(R.string.cerrarSesion)
-            builder.setIcon(R.drawable.ic_baseline_login_24)
-            builder.setPositiveButton(R.string.cancelar) { dialog, which ->
-                Toast.makeText(this, R.string.cancelarAccion, Toast.LENGTH_SHORT).show()
-            }
-            builder.setNegativeButton(R.string.salir) { dialog, which ->
-                Toast.makeText(this, R.string.sesionCerrada, Toast.LENGTH_SHORT).show()
-                val validar = ValidacionesUtils()
-                validar.reiniciarApp(pre, this)
-            }
-            builder.show()
-        }
+        activarBotones()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -112,26 +84,40 @@ class ListaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        recargarPeliculas()
+    }
 
-        //hay conexion a internet
-        if(!isNetworkAvailable(this)){
-            Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT).show()
-            val db = DataBasePeliculas.getDatabase(this)
-            val  peliculasDao = db?.peliculasDao()
-            GlobalScope.launch(Dispatchers.IO) {
-                listaPelicula= peliculasDao?.findAll()?.toCollection(ArrayList())
-                runOnUiThread {
-                    Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT).show()
-                }
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val nw = connectivityManager.activeNetwork ?: return false
+            val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
+            return when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                //for other device how are able to connect with Ethernet
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                //for check internet over Bluetooth
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                else -> false
             }
+        } else {
+            val nwInfo = connectivityManager.activeNetworkInfo ?: return false
+            return nwInfo.isConnected
+        }
+    }
 
-            val layoutManager = LinearLayoutManager(applicationContext)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.load -> {
+               recargarPeliculas()
+                return false
+            }else -> super.onOptionsItemSelected(item)
+        }
+    }
 
-           adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
-           binding.rvListaPeliculas.layoutManager = layoutManager
-           binding.rvListaPeliculas.adapter = adapters
-        }else{
-        pre = DatosPreferences(this)
+    fun getPeliculas(){
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://damapi.herokuapp.com/api/v1/")
@@ -167,39 +153,88 @@ class ListaActivity : AppCompatActivity() {
                     }
                 } else {
                     val db = DataBasePeliculas.getDatabase(applicationContext)
-                    val  peliculasDao = db?.peliculasDao()
+                    val peliculasDao = db?.peliculasDao()
                     GlobalScope.launch(Dispatchers.IO) {
-
+                        peliculasDao?.delete()
                         response.body()?.forEach { it -> it.idRoom = it.id!! }
                         peliculasDao?.insert(response.body())
                     }
                     val layoutManager = LinearLayoutManager(applicationContext)
-                    val listaPelicula: ArrayList<Pelicula>? = response.body()?.toCollection(ArrayList())
-                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext)
+                    val listaPelicula: ArrayList<Pelicula>? =
+                        response.body()?.toCollection(ArrayList())
+                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext,true)
                     binding.rvListaPeliculas.layoutManager = layoutManager
                     binding.rvListaPeliculas.adapter = adapters
                 }
             }
-        })}
+        })
     }
 
-    fun isNetworkAvailable(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val nw      = connectivityManager.activeNetwork ?: return false
-            val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
-            return when {
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                //for other device how are able to connect with Ethernet
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                //for check internet over Bluetooth
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
-                else -> false
+    fun recargarPeliculas(){
+        if (!isNetworkAvailable(this)) {
+            Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT).show()
+            val db = DataBasePeliculas.getDatabase(this)
+            val peliculasDao = db?.peliculasDao()
+            GlobalScope.launch(Dispatchers.IO) {
+                listaPelicula = peliculasDao?.findAll()?.toCollection(ArrayList())
+                runOnUiThread {
+                    Toast.makeText(applicationContext, R.string.errorInternet, Toast.LENGTH_SHORT)
+                        .show()
+                    val layoutManager = LinearLayoutManager(applicationContext)
+                    adapters = listaPeliculasAdapters(listaPelicula, applicationContext,false)
+                    binding.rvListaPeliculas.layoutManager = layoutManager
+                    binding.rvListaPeliculas.adapter = adapters
+                    binding.fbAdd.setOnClickListener {
+                        Toast.makeText(applicationContext, R.string.noInternet, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    binding.fbSalir.setOnClickListener {
+                        Toast.makeText(applicationContext, R.string.noInternet, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
             }
+
         } else {
-            val nwInfo = connectivityManager.activeNetworkInfo ?: return false
-            return nwInfo.isConnected
+            pre = DatosPreferences(this)
+            Toast.makeText(applicationContext, R.string.hayInternet, Toast.LENGTH_SHORT)
+                .show()
+            activarBotones()
+            getPeliculas()
+        }
+    }
+
+    fun activarBotones(){
+        if (isNetworkAvailable(this)) {
+            binding.fbAdd.setOnClickListener {
+                val intent = Intent(this, CrearPeliculaActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        binding.fbMas.setOnClickListener {
+            if (binding.fbAdd.visibility == View.GONE) {
+                binding.fbSalir.show()
+                binding.fbAdd.show()
+                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_remove_24))
+            } else {
+                binding.fbSalir.hide()
+                binding.fbAdd.hide()
+                binding.fbMas.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_add_24))
+            }
+        }
+        binding.fbSalir.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(R.string.cerrarSesion)
+            builder.setIcon(R.drawable.ic_baseline_login_24)
+            builder.setPositiveButton(R.string.cancelar) { dialog, which ->
+                Toast.makeText(this, R.string.cancelarAccion, Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton(R.string.salir) { dialog, which ->
+                Toast.makeText(this, R.string.sesionCerrada, Toast.LENGTH_SHORT).show()
+                val validar = ValidacionesUtils()
+                validar.reiniciarApp(pre, this)
+            }
+            builder.show()
         }
     }
 }

@@ -1,14 +1,8 @@
 package ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.Dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import ies.murallaromana.dam.com.example.pruebalistas.model.entities.Pelicula
 import ies.murallaromana.dam.com.example.gonzalezahinoaproyectopmdm.model.entities.User
-
-import androidx.room.OnConflictStrategy
-
-
 
 
 @Dao
@@ -19,4 +13,7 @@ interface PeliculasDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(peliculas: List<Pelicula>?)
+
+    @Query("Delete from peliculas")
+    fun delete()
 }

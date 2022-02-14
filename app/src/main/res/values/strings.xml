@@ -46,5 +46,7 @@
     <string name="errorRegistro">No se ha podido crear la cuenta.</string>
     <string name="registroCorrecto">Cuenta creada correctamente</string>
     <string name="errorImagen">Introduce una URL</string>
-    <string name="errorInternet">No hay conexión a internets</string>
+    <string name="errorInternet">No hay conexión a internet, algunas funciones están desactivadas</string>
+    <string name="noInternet">Conectate a internet</string>
+    <string name="hayInternet">Hay conexión a internet</string>
 </resources>

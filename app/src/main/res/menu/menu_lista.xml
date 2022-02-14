@@ -8,4 +8,11 @@
         android:orderInCategory="300"
         android:title="Buscar"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/load"
+        android:icon="@drawable/ic_baseline_autorenew_24"
+        android:orderInCategory="300"
+        android:title="Cargar"
+        app:showAsAction="ifRoom" />
 </menu>
